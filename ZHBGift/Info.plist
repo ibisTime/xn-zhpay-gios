@@ -24,10 +24,10 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>com.ZhengHui.WalletMerchant</string>
+			<string>com.ZhengHui.WalletMerchantGift</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>zhsj</string>
+				<string>zhsjgift</string>
 			</array>
 		</dict>
 	</array>

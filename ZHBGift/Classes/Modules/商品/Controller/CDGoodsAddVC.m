@@ -693,43 +693,30 @@
         
     }
     
-    if (self.goods && !self.isChangeType) { //没有修改过类别
-        
-        // http.parameters[@"category"] = self.goods.category; //小类
-        http.parameters[@"type"] = self.goods.type; //小类
-        
-    } else {
-        
-        NSMutableArray *array = [ZHCategoryManager manager].categoryDict[bigModel.code];
-        if (array.count > 0) {
-            ZHCategoryModel *smallModel = array[smallIndex];
-            //            http.parameters[@"category"] = smallModel.code; //小类
-            http.parameters[@"type"] = smallModel.code; //小类
-            
-        } else {
-            
-            //          http.parameters[@"category"] = @"无"; //小类
-            http.parameters[@"type"] = @"无"; //小类
-            
-        }
-        
-    }
+//    if (self.goods && !self.isChangeType) { //没有修改过类别
+//        
+//        // http.parameters[@"category"] = self.goods.category; //小类
+//        http.parameters[@"type"] = self.goods.type; //小类
+//        
+//    } else {
+//        
+//        NSMutableArray *array = [ZHCategoryManager manager].categoryDict[bigModel.code];
+//        if (array.count > 0) {
+//            ZHCategoryModel *smallModel = array[smallIndex];
+//            //            http.parameters[@"category"] = smallModel.code; //小类
+//            http.parameters[@"type"] = smallModel.code; //小类
+//            
+//        } else {
+//            
+//            //          http.parameters[@"category"] = @"无"; //小类
+//            http.parameters[@"type"] = @"无"; //小类
+//            
+//        }
+//        
+//    }
     
 
-//    if ([self.rmbTf.text valid]) {
-//        http.parameters[@"price1"] = [self.rmbTf.text convertToSysMoney];//人民币
-//        
-//    }
-//    if ([self.gwbTf.text valid]) {
-//        http.parameters[@"price2"] = [self.gwbTf.text convertToSysMoney];//购物
-//        
-//    }
-//    
-//    if ([self.qbbTf.text valid]) {
-//        
-//        http.parameters[@"price3"] = [self.qbbTf.text convertToSysMoney]; //钱包
-//        
-//    }
+    http.parameters[@"type"] = @"FL201700000000000101";
     
     //
     http.parameters[@"slogan"] = self.sloganTextView.text;//广告语
@@ -918,6 +905,7 @@
     self.goodsTypeTf = [self tfWithFrame:CGRectMake(0, self.sloganTf.yy, SCREEN_WIDTH, 45) leftTitle:@"分类" placeholder:@"请选择商品分类"];
     [headerView addSubview:self.goodsTypeTf];
     self.goodsTypeTf.enabled = NO;
+    self.goodsTypeTf.text = @"礼品";
     UIButton *maskBtn = [[UIButton alloc] initWithFrame:self.goodsTypeTf.frame];
     [headerView addSubview:maskBtn];
     

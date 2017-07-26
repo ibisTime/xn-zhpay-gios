@@ -46,7 +46,7 @@
 
 + (NSString *)kindType {
     
-    return @"f2";
+    return @"f3";
     
 }
 

@@ -50,15 +50,8 @@
     //键盘处理
     [self keyboardHandle];
     
-    //极光推送
-    [self jpushInitWithLaunchOption:launchOptions];
-    
-    //友盟错误统计
-    //友盟异常捕获
-    UMConfigInstance.appKey = @"586b9d9475ca3501fa000591";
-//    UMConfigInstance.channelId = @"App Store";
-    [MobClick startWithConfigure:UMConfigInstance];//配置以上参数后调用此方法初始化SDK！
-    
+
+
     if([[ZHUser user] isLogin]){
         //开发更换根控制器
         self.window.rootViewController = [[ZHNavigationController alloc] initWithRootViewController:[[CDHomeVC alloc] init]];
@@ -75,25 +68,6 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userLoginOut) name:kUserLoginOutNotification object:nil];
     
     [self pushInitWithOption:launchOptions];
-
-
-//    [CDVoicePlayer player].canPlay  = YES;
-//    if ([AppConfig config].runEnv == RunEnvDev) {
-//        
-//            NSError *error = NULL;
-//            AVAudioSession *session = [AVAudioSession sharedInstance];
-//            [session setCategory:AVAudioSessionCategoryPlayback error:&error];
-//            if(error) {
-//                // Do some error handling
-//            }
-//            [session setActive:YES error:&error];
-//            if (error) {
-//                // Do some error handling
-//            }
-//            //让app支持接受远程控制事件
-//            [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
-//        
-//    }
 
 
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
