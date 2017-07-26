@@ -1,0 +1,31 @@
+//
+//  ZHPrefixHeader.pch
+//  ZHBGift
+//
+//  Created by  tianlei on 2016/12/12.
+//  Copyright © 2016年  tianlei. All rights reserved.
+//
+#ifdef __OBJC__
+
+#ifndef ZHPrefixHeader_pch
+#define ZHPrefixHeader_pch
+
+#define ZIP_COEFFICIENT 0.5
+#define LINE_HEIGHT 0.5
+
+//黑色背景
+#define HOME_BLACK_BACKGROUND_COLOR [UIColor colorWithHexString:@"#010103"]
+#define HOME_TEXT_COLOR_1 [UIColor colorWithHexString:@"#788183"]
+#define HOME_TEXT_COLOR_2 [UIColor colorWithHexString:@"#fbfcfc"]
+
+#import "TLHeader.h"
+#import "ZHUser.h"
+#import "ZHShop.h"
+#import "ZHBMacro.h"
+
+#import "Masonry.h"
+
+#import "UIColor+theme.h"
+
+#endif /* ZHPrefixHeader_pch */
+#endif
