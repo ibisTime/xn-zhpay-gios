@@ -103,6 +103,12 @@
     
 }
 
+- (void)tl_placeholderOperation {
+
+    [self getData];
+
+}
+
 
 - (void)getData {
 

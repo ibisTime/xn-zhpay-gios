@@ -48,7 +48,7 @@
        //订单
       self.navigationController.navigationBar.barTintColor = [UIColor orderThemeColor];
     
-    } else if ([self checkSelfClass:@[@"ZHBillVC",@"CDOneBillDetailVC"]]) {
+    } else if ([self checkSelfClass:@[@"ZHBillVC",@"CDOneBillDetailVC",@"ZHBillTypeChooseVC"]]) {
        //账单
         self.navigationController.navigationBar.barTintColor = [UIColor billThemeColor];
         

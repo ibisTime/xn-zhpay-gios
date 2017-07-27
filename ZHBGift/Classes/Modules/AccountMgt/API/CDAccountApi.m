@@ -14,7 +14,7 @@
 
 @implementation CDAccountApi
 
-+ (void)getFRBWSuccess:(void(^)(ZHCurrencyModel *FRBCurrency))success failure:(void(^)(NSError *err))failure {
++ (void)getFRBWSuccess:(void(^)(ZHCurrencyModel *FRBCurrency,ZHCurrencyModel *GiftBCurrency))success failure:(void(^)(NSError *err))failure {
 
     //查询账户信息
     TLNetworking *http = [TLNetworking new];
@@ -25,19 +25,33 @@
     [http postWithSuccess:^(id responseObject) {
         
         NSMutableArray <ZHCurrencyModel *>*arr = [ZHCurrencyModel tl_objectArrayWithDictionaryArray:responseObject[@"data"]];
+      __block  ZHCurrencyModel * FRBCurrencyTemp ;
+      __block  ZHCurrencyModel * GiftBCurrencyTemp ;
+
+        
         [arr enumerateObjectsUsingBlock:^(ZHCurrencyModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             
             if ([obj.currency isEqualToString:kFRB]) {
                 
-       
-                if (success) {
-                    success(obj);
-                } else {
-                    failure(nil);
-                }
+                FRBCurrencyTemp = obj;
+          
+            } else if ([obj.currency isEqualToString:kGiftB]) {
+            
+                GiftBCurrencyTemp = obj;
+                
+                
             }
             
         }];
+        
+        
+        if (FRBCurrencyTemp && GiftBCurrencyTemp) {
+            success(FRBCurrencyTemp,GiftBCurrencyTemp);
+        } else {
+        
+            failure(nil);
+        
+        }
         
         
     } failure:^(NSError *error) {

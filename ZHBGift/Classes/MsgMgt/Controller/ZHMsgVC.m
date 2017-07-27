@@ -42,11 +42,11 @@
     pageDataHelper.parameters[@"channelType"] = @"4";
     
     pageDataHelper.parameters[@"pushType"] = @"41";
-    pageDataHelper.parameters[@"toKind"] = @"2";
+    pageDataHelper.parameters[@"toKind"] = @"f3";
 //    1 立即发 2 定时发
     pageDataHelper.parameters[@"smsType"] = @"1";
     pageDataHelper.parameters[@"status"] = @"1";
-
+    
     pageDataHelper.parameters[@"fromSystemCode"] = @"CD-CZH000001";
     
     

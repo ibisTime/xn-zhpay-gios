@@ -11,6 +11,6 @@
 
 @interface CDAccountApi : NSObject
 
-+ (void)getFRBWSuccess:(void(^)(ZHCurrencyModel *FRBCurrency))success failure:(void(^)(NSError *err))failure;
++ (void)getFRBWSuccess:(void(^)(ZHCurrencyModel *FRBCurrency,ZHCurrencyModel *GiftBCurrency))success failure:(void(^)(NSError *err))failure;
 
 @end

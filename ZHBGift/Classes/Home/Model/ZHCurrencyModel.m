@@ -10,6 +10,9 @@
 
  NSString *const kFRB = @"FRB";
  NSString *const kGXB = @"GXJL";
+ NSString *const kGiftB = @"LPQ";
+
+
  NSString *const kQBB = @"QBB";
  NSString *const kGWB = @"GWB";
  NSString *const kHBYJ  = @"HBYJ";

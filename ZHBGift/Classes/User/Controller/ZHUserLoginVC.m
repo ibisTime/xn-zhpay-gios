@@ -205,6 +205,7 @@
     UIButton *regBtn = [UIButton borderBtnWithFrame:CGRectMake(margin,loginBtn.yy + 30, w, h) title:@"注册" borderColor:[UIColor whiteColor]];
     [regBtn addTarget:self action:@selector(goReg) forControlEvents:UIControlEventTouchUpInside];
     [bgSV addSubview:regBtn];
+    regBtn.hidden = YES;
 
 
 

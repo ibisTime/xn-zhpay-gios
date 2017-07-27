@@ -124,6 +124,8 @@
 		2E61C21C1F00E60900FBD96E /* UIImage+TLAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E61C21B1F00E60900FBD96E /* UIImage+TLAdd.m */; };
 		2E61C21F1F00F1B100FBD96E /* TLCollectMoneyHintVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E61C21E1F00F1B100FBD96E /* TLCollectMoneyHintVC.m */; };
 		2E61C2221F00F20600FBD96E /* NSTimer+tlNoCycle.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E61C2211F00F20600FBD96E /* NSTimer+tlNoCycle.m */; };
+		2E75B1FB1F2993E40042C419 /* ZHBillTypeChooseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E75B1FA1F2993E40042C419 /* ZHBillTypeChooseVC.m */; };
+		2E75B1FE1F2994BC0042C419 /* ZHWalletView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E75B1FD1F2994BC0042C419 /* ZHWalletView.m */; };
 		2E7CB2A61E026EBC00C19C9D /* ZHUserExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7CB2A51E026EBC00C19C9D /* ZHUserExt.m */; };
 		2E9086FD1F1C9BC7002374F4 /* ZHRealNameAuthVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E9086FC1F1C9BC7002374F4 /* ZHRealNameAuthVC.m */; };
 		2E993FAC1EEA93B3005A53FE /* Address.json in Resources */ = {isa = PBXBuildFile; fileRef = 2E993FAB1EEA93B3005A53FE /* Address.json */; };
@@ -425,6 +427,10 @@
 		2E61C21E1F00F1B100FBD96E /* TLCollectMoneyHintVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLCollectMoneyHintVC.m; sourceTree = "<group>"; };
 		2E61C2201F00F20600FBD96E /* NSTimer+tlNoCycle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+tlNoCycle.h"; sourceTree = "<group>"; };
 		2E61C2211F00F20600FBD96E /* NSTimer+tlNoCycle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+tlNoCycle.m"; sourceTree = "<group>"; };
+		2E75B1F91F2993E40042C419 /* ZHBillTypeChooseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHBillTypeChooseVC.h; sourceTree = "<group>"; };
+		2E75B1FA1F2993E40042C419 /* ZHBillTypeChooseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHBillTypeChooseVC.m; sourceTree = "<group>"; };
+		2E75B1FC1F2994BC0042C419 /* ZHWalletView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHWalletView.h; sourceTree = "<group>"; };
+		2E75B1FD1F2994BC0042C419 /* ZHWalletView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHWalletView.m; sourceTree = "<group>"; };
 		2E7CB2991E023BA000C19C9D /* APICodeHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APICodeHeader.h; sourceTree = "<group>"; };
 		2E7CB2A41E026EBC00C19C9D /* ZHUserExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHUserExt.h; sourceTree = "<group>"; };
 		2E7CB2A51E026EBC00C19C9D /* ZHUserExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHUserExt.m; sourceTree = "<group>"; };
@@ -1463,6 +1469,8 @@
 				2EFF1B241ED7C0B00024CB2D /* ZHBillVC.m */,
 				2E993FB51EEBA854005A53FE /* CDBillHistoryVC.h */,
 				2E993FB61EEBA854005A53FE /* CDBillHistoryVC.m */,
+				2E75B1F91F2993E40042C419 /* ZHBillTypeChooseVC.h */,
+				2E75B1FA1F2993E40042C419 /* ZHBillTypeChooseVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1479,6 +1487,8 @@
 		2EFF1B2C1ED7C0B00024CB2D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2E75B1FC1F2994BC0042C419 /* ZHWalletView.h */,
+				2E75B1FD1F2994BC0042C419 /* ZHWalletView.m */,
 				2EFF1B301ED7C0B00024CB2D /* ZHBillCell.h */,
 				2EFF1B311ED7C0B00024CB2D /* ZHBillCell.m */,
 			);
@@ -1665,6 +1675,7 @@
 				2E220B411DFE54340021C365 /* TLMsgBadgeView.m in Sources */,
 				2EBCF51C1E49685A003A3A5E /* AppDelegate+JPush.m in Sources */,
 				2E202F9D1EE7F08100E38656 /* ZHCoupon.m in Sources */,
+				2E75B1FB1F2993E40042C419 /* ZHBillTypeChooseVC.m in Sources */,
 				2E9086FD1F1C9BC7002374F4 /* ZHRealNameAuthVC.m in Sources */,
 				2EEF8E0D1EE3EBEF00453109 /* TLError.m in Sources */,
 				2EE3CB031DFE99CF000B547C /* ZHSetGroup.m in Sources */,
@@ -1713,6 +1724,7 @@
 				2E202F941EE7F08100E38656 /* ZHOrderVC.m in Sources */,
 				2E220B3D1DFE54340021C365 /* UIView+Frame.m in Sources */,
 				2EEED9FC1ED421930077AD33 /* CDHomeOperationCell.m in Sources */,
+				2E75B1FE1F2994BC0042C419 /* ZHWalletView.m in Sources */,
 				2E4E8BB41E1FA82100AC022A /* TLBaseModel.m in Sources */,
 				2E202F911EE7F08100E38656 /* CDParameterCell.m in Sources */,
 				2E021C4C1E0BB64D00758EFA /* ZHMsgVC.m in Sources */,

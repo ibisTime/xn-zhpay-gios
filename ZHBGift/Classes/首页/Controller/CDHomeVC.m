@@ -31,6 +31,8 @@
 #import "CDConsumptionModel.h"
 #import "TLCollectMoneyHintVC.h"
 #import "ZHRealNameAuthVC.h"
+#import "ZHBillTypeChooseVC.h"
+
 
 
 
@@ -50,7 +52,19 @@
 
 //账户相关
 @property (nonatomic, strong) UIImageView *accountImageView;
+
+
+/**
+ 分润余额
+ */
 @property (nonatomic, strong) UILabel *balanceLbl;
+
+/**
+ 礼品券余额
+ */
+@property (nonatomic, strong) UILabel *giftBalanceLbl;
+
+
 @property (nonatomic, strong) UIButton *withdrawBtn;
 @property (nonatomic, strong) UILabel *totalTurnoverLbl;
 @property (nonatomic, strong) UILabel *hasWithdrawLbl;
@@ -74,6 +88,8 @@
 
 //请求数据
 @property (nonatomic, strong) ZHCurrencyModel *FRBModel;
+@property (nonatomic, strong) ZHCurrencyModel *GiftBModel;
+
 @property (nonatomic, strong) CDGoodsAndOrderCountModel *goodsAndOrderCountModel;
 @property (nonatomic, strong) CDHomeAccountInfoModel *accountInfModel;
 
@@ -405,7 +421,7 @@
     sysMsgHttp.parameters[@"channelType"] = @"4";
     
     sysMsgHttp.parameters[@"pushType"] = @"41";
-    sysMsgHttp.parameters[@"toKind"] = @"2";
+    sysMsgHttp.parameters[@"toKind"] = @"f3";
     //    1 立即发 2 定时发
     sysMsgHttp.parameters[@"smsType"] = @"1";
     sysMsgHttp.parameters[@"status"] = @"1";
@@ -444,11 +460,12 @@
     //
     requestCount ++;
     dispatch_group_enter(_topDataGroup);
-    [CDAccountApi getFRBWSuccess:^(ZHCurrencyModel *FRBCurrency) {
+    [CDAccountApi getFRBWSuccess:^(ZHCurrencyModel *FRBCurrency,ZHCurrencyModel *GiftBCurrency) {
         topDataSuccessCount ++;
         dispatch_group_leave(_topDataGroup);
         
         self.FRBModel = FRBCurrency;
+        self.GiftBModel = GiftBCurrency;
         
         
     } failure:^(NSError *err) {
@@ -621,8 +638,6 @@
     
     return;
     
-   
-
 }
 
 
@@ -706,12 +721,10 @@
     accountOpModel.rightText = @"处理中";
     [accountOpModel setMainAction:^{
         
-        ZHBillVC *vc = [[ZHBillVC alloc] init];
-        vc.accountNumber = self.FRBModel.accountNumber;
-        [weakself.navigationController pushViewController:vc animated:YES];
-        [vc.navigationController.navigationBar setBarTintColor:[UIColor billThemeColor]];
-
+        ZHBillTypeChooseVC *vc = [[ZHBillTypeChooseVC alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
         
+  
     }];
     
     //账户设置
@@ -765,7 +778,8 @@
     self.shopTypeLbl.text = [ZHShop shop].isGongYi ? @"类型：礼品商" : @"类型：礼品商";
 
     //
-    self.balanceLbl.attributedText = [self formatAmount:self.FRBModel.amount];
+    self.balanceLbl.attributedText = [self formatAmount:self.FRBModel.amount unit:@"￥"];
+    self.giftBalanceLbl.attributedText = [self formatAmount:self.GiftBModel.amount unit:@"礼品券"];
     
     
 //    [self formatString:[self.FRBModel.amount convertToRealMoney]];
@@ -814,7 +828,7 @@
 - (void)withdraw {
 
     [TLProgressHUD showWithStatus:nil];
-    [CDAccountApi getFRBWSuccess:^(ZHCurrencyModel *FRBCurrency) {
+    [CDAccountApi getFRBWSuccess:^(ZHCurrencyModel *FRBCurrency,ZHCurrencyModel *GiftBCurrency) {
         
         [TLProgressHUD dismiss];
         
@@ -882,7 +896,7 @@
     return cell;
 }
 
-- (NSMutableAttributedString *)formatAmount:(NSNumber *)amount {
+- (NSMutableAttributedString *)formatAmount:(NSNumber *)amount unit:(NSString *)unit {
 
     
     NSString *formatStr = nil;
@@ -899,16 +913,16 @@
     }
     
     
-    NSString *totalStr = [NSString stringWithFormat:@"￥%@",formatStr];
+    NSString *totalStr = [NSString stringWithFormat:@"%@ %@",unit,formatStr];
     NSRange dotRange = [totalStr rangeOfString:@"."];
     if (dotRange.length <=0 ) {
         return nil;
     }
     
     NSMutableAttributedString *mutableAttr = [[NSMutableAttributedString alloc] initWithString:totalStr];
-    
-    [mutableAttr addAttribute:NSFontAttributeName value:FONT(18) range:NSMakeRange(0, 1)];
-    [mutableAttr addAttribute:NSFontAttributeName value:FONT(18) range:NSMakeRange(dotRange.location, formatStr.length - dotRange.location + 1)];
+//
+//    [mutableAttr addAttribute:NSFontAttributeName value:self.balanceLbl.font range:NSMakeRange(0, 1)];
+//    [mutableAttr addAttribute:NSFontAttributeName value:self.balanceLbl.font range:NSMakeRange(dotRange.location, formatStr.length - dotRange.location + 1)];
     
     return mutableAttr;
 
@@ -988,9 +1002,16 @@
     self.balanceLbl = [UILabel labelWithFrame:CGRectZero
                                   textAligment:NSTextAlignmentLeft
                                backgroundColor:[UIColor clearColor]
-                                          font:FONT(38)
+                                          font:FONT(20)
                                      textColor:textColr];
     [self.scrollContentView addSubview:self.balanceLbl];
+    
+    self.giftBalanceLbl = [UILabel labelWithFrame:CGRectZero
+                                 textAligment:NSTextAlignmentLeft
+                              backgroundColor:[UIColor clearColor]
+                                         font:FONT(18)
+                                    textColor:textColr];
+    [self.scrollContentView addSubview:self.giftBalanceLbl];
     
     //提现按钮
     self.withdrawBtn = [[UIButton alloc] init];
@@ -1055,9 +1076,18 @@
     
     [self.balanceLbl mas_makeConstraints:^(MASConstraintMaker *make) {
         
-        make.top.equalTo(self.phoneLbl.mas_bottom).offset(20);
+        make.top.equalTo(self.phoneLbl.mas_bottom).offset(15);
         make.left.equalTo(self.scrollContentView.mas_left).offset(TOP_LEFT_MARGIN);
     }];
+    
+    [self.giftBalanceLbl mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.top.equalTo(self.balanceLbl.mas_bottom).offset(5);
+        make.left.equalTo(self.scrollContentView.mas_left).offset(TOP_LEFT_MARGIN);
+        
+    }];
+    
+    
     
     [self.accountImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         
@@ -1065,24 +1095,27 @@
         make.centerY.equalTo(self.balanceLbl.mas_centerY);
     }];
     
+    //提现
     [self.withdrawBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         
-        make.left.equalTo(self.balanceLbl.mas_right).offset(30);
-        make.bottom.equalTo(self.balanceLbl.mas_bottom);
+        make.right.equalTo(voicePlayBtn.mas_left).offset(-20);
+        make.top.equalTo(self.phoneLbl.mas_bottom).offset(15);
+        make.width.greaterThanOrEqualTo(@50);
     }];
     
     [voicePlayBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         
         make.right.equalTo(self.scrollContentView.mas_right).offset(-10);
-        make.bottom.equalTo(self.balanceLbl.mas_bottom);
+        make.top.equalTo(self.withdrawBtn.mas_top);
         make.left.greaterThanOrEqualTo(self.withdrawBtn.mas_right);
 
     }];
+    
     //累计营业额
     [self.totalTurnoverLbl mas_makeConstraints:^(MASConstraintMaker *make) {
         
         make.left.equalTo(self.balanceLbl.mas_left);
-        make.top.equalTo(self.balanceLbl.mas_bottom).offset(10);
+        make.top.equalTo(self.giftBalanceLbl.mas_bottom).offset(10);
     }];
     
     [self.hasWithdrawLbl mas_makeConstraints:^(MASConstraintMaker *make) {
