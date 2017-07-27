@@ -149,6 +149,7 @@
 - (void)updateApp {
     
     
+    return;
     [TLNetworking GET:[NSString stringWithFormat:@"http://itunes.apple.com/lookup?id=%@",APP_ID] parameters:nil success:^(NSString *msg, id data) {
         
         //线上版本
@@ -680,13 +681,12 @@
     [goodsOpModel setMainAction:^{
         
 #warning dev-warning
-//        if (![ZHUser user].realName || [ZHUser user].realName.length <= 0) {
-//
-//             [self goRealNameAuth];
-//             return ;
-//        }
+        if (![ZHUser user].realName || [ZHUser user].realName.length <= 0) {
+
+             [self goRealNameAuth];
+             return ;
+        }
         
-      
         
         //
         CDGoodsMgtVC *vc = [CDGoodsMgtVC new];

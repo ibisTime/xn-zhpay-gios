@@ -76,7 +76,7 @@
         
     }
     
-    return [NSString stringWithFormat:@"收到手机尾号为%@支付的%@元人民币",str,[self.storeAmount convertToRealMoney]];
+    return [NSString stringWithFormat:@"收到手机尾号为%@支付的%@礼品券",str,[self.storeAmount convertToRealMoney]];
     
 
 

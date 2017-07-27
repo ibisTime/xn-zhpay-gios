@@ -87,7 +87,7 @@
 
     if (!_setClassArr) {
         
-        _setClassArr = @[@"ZHAccountAboutVC",@"ZHChangeMobileVC",@"ZHPwdRelatedVC",@"ZHAboutUsVC",@"ZHBankCardListVC",@"ZHRealNameAuthVC"];
+        _setClassArr = @[@"ZHAccountAboutVC",@"ZHChangeMobileVC",@"ZHPwdRelatedVC",@"ZHAboutUsVC",@"ZHBankCardListVC",@"ZHRealNameAuthVC",@"ZHBankCardAddVC"];
 
     }
     

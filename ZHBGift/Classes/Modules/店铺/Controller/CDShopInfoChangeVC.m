@@ -195,18 +195,18 @@
 }
 
 #pragma mark- 选择店铺类型
-- (void)chooseShopType {
-
-    
-    ZHShopTypeChooseVC *vc = [[ZHShopTypeChooseVC alloc] init];
-    vc.selectedType = ^(NSString *typeName,NSString *code){
-        
-        self.shopType = code;
-        self.shopTypeView.bottomLbl.text = [NSString stringWithFormat:@"店铺类型: %@",typeName];
-    };
-    
-    [self.navigationController pushViewController:vc animated:YES];
-}
+//- (void)chooseShopType {
+//
+//    
+//    ZHShopTypeChooseVC *vc = [[ZHShopTypeChooseVC alloc] init];
+//    vc.selectedType = ^(NSString *typeName,NSString *code){
+//        
+//        self.shopType = code;
+//        self.shopTypeView.bottomLbl.text = [NSString stringWithFormat:@"店铺类型: %@",typeName];
+//    };
+//    
+//    [self.navigationController pushViewController:vc animated:YES];
+//}
 
 - (void)addInfo {
 
@@ -230,7 +230,8 @@
     //
     [self.signAContractView addTarget:self action:@selector(addInfo) forControlEvents:UIControlEventTouchUpInside];
     //
-    [self.shopTypeView addTarget:self action:@selector(chooseShopType) forControlEvents:UIControlEventTouchUpInside];
+    
+//    [self.shopTypeView addTarget:self action:@selector(chooseShopType) forControlEvents:UIControlEventTouchUpInside];
 
 }
 
@@ -245,16 +246,17 @@
 
         self.title = @"店铺装修";
 
-        [[ZHShop shop].shopTypes  enumerateObjectsUsingBlock:^(ZHShopTypeModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            
-            if ([obj.code isEqualToString:[ZHShop shop].type]) {
-                
-                self.shopTypeView.bottomLbl.text = obj.name; //code
-                
-            }
-            
-        }];
-        
+//        [[ZHShop shop].shopTypes  enumerateObjectsUsingBlock:^(ZHShopTypeModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//            
+//            if ([obj.code isEqualToString:[ZHShop shop].type]) {
+//                
+//                self.shopTypeView.bottomLbl.text = obj.name; //code
+//                
+//            }
+//            
+//        }];
+    
+        self.shopTypeView.bottomLbl.text = @"礼品商"; //code
         self.shopType = [ZHShop shop].type;
         //
         self.shopNameTf.text = [ZHShop shop].name;
