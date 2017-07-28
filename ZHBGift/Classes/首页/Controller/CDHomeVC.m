@@ -708,7 +708,7 @@
         
         ZHOrderVC *vc = [[ZHOrderVC alloc] init];
         [weakself.navigationController pushViewController:vc animated:YES];
-        vc.navigationController.navigationBar.barTintColor = [UIColor orderThemeColor];
+//        vc.navigationController.navigationBar.barTintColor = [UIColor orderThemeColor];
 
     }];
     

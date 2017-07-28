@@ -9,6 +9,8 @@
 #import "CDOrderDetaiVC.h"
 #import "ZHOrderModel.h"
 #import "CDSendTfView.h"
+#import "CDOrderPerGoodsCell.h"
+#import "CDOrderPerGoodsCell.h"
 
 @interface CDOrderDetaiVC ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -440,18 +442,24 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
 
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCellId"];
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCellId"];
+    
+    CDOrderPerGoodsCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCellId"];
     
     if (!cell) {
         
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"UITableViewCellId"];
-        cell.textLabel.font = FONT(14);
-        cell.textLabel.textColor = [UIColor textColor];
-        cell.textLabel.numberOfLines = 0;
+        cell = [[CDOrderPerGoodsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"UITableViewCellId"];
+//        cell.textLabel.font = FONT(14);
+//        cell.textLabel.textColor = [UIColor textColor];
+//        cell.textLabel.numberOfLines = 0;
     }
     
     //
-    cell.textLabel.text = [NSString stringWithFormat:@"%@  规格：%@   数量*%@",self.orderModel.product.name,self.orderModel.productSpecsName,self.orderModel.quantity];
+    cell.contetnLbl.text = [NSString stringWithFormat:@"%@  规格：%@%@",self.orderModel.product.name,self.orderModel.productSpecsName,@""];
+    
+    cell.numLbl.text = [NSString stringWithFormat:@"数量*%@",self.orderModel.quantity];
+    
+//    cell.textLabel.text = [NSString stringWithFormat:@"%@  规格：%@   数量*%@",self.orderModel.product.name,self.orderModel.productSpecsName,self.orderModel.quantity];
     
     return cell;
     

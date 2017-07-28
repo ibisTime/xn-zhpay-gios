@@ -196,13 +196,13 @@
         self.shopLeveUpView.topLeftLbl.text = @"店铺已升级";
         self.shopLeveUpView.topRightLbl.text = @"";
 //        self.shopLeveUpView.bottomLbl.text = @"您已经是公益型商家";
-        self.shopLeveUpView.bottomLbl.text = @"普通商家";
+        self.shopLeveUpView.bottomLbl.text = @"礼品商";
         
     } else {
     
         self.shopLeveUpView.topLeftLbl.text = @"店铺升级";
         self.shopLeveUpView.topRightLbl.text = @"免费在线升级";
-        self.shopLeveUpView.bottomLbl.text = @"您还是普通商家，无法获得额外收益";
+        self.shopLeveUpView.bottomLbl.text = @"您还是礼品商，无法获得额外收益";
     }
     
     NSString *status = [ZHShop shop].status;
@@ -285,7 +285,7 @@
     //
     self.shopLeveUpView.topLeftLbl.text = @"店铺升级";
     self.shopLeveUpView.topRightLbl.text = @"免费在线升级";
-    self.shopLeveUpView.bottomLbl.text = @"您还是普通商家，无法获得额外收益";
+    self.shopLeveUpView.bottomLbl.text = @"您还是礼品商，无法获得额外收益";
     
     //
 //    self.couponMgtView.topLeftLbl.text = @"抵扣券管理";
@@ -395,7 +395,7 @@
             self.shopLeveUpView.topLeftLbl.text = @"店铺已升级";
             self.shopLeveUpView.topRightLbl.text = @"";
 //            self.shopLeveUpView.bottomLbl.text = @"您已经是公益型商家";
-            self.shopLeveUpView.bottomLbl.text = @"普通商家";
+            self.shopLeveUpView.bottomLbl.text = @"礼品商";
             
         }];
         [self.navigationController pushViewController:vc animated:YES];

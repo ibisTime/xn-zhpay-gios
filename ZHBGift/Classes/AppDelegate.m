@@ -37,7 +37,7 @@
     [self uiInit];
     
     //配置环境
-    [AppConfig config].runEnv = RunEnvDev;
+    [AppConfig config].runEnv = RunEnvTest;
     
     //
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];

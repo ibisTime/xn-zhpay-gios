@@ -20,7 +20,7 @@
 
 //    return [NSString stringWithFormat:@"%@ 人民币/%@  购物币/%@ 钱包币/%@\n重量：%@kg  库存：%@  发货地:%@",self.name,[self.price1 convertToRealMoney],[self.price2 convertToRealMoney],[self.price3 convertToRealMoney],self.weight,self.quantity,self.province];
     
-   return [NSString stringWithFormat:@"%@ 人民币/%@ \n重量：%@kg  库存：%@  发货地:%@",self.name,[self.price1 convertToRealMoney],self.weight,self.quantity,self.province];
+   return [NSString stringWithFormat:@"%@ 礼品券/%@ \n重量：%@kg  库存：%@  发货地:%@",self.name,[self.price1 convertToRealMoney],self.weight,self.quantity,self.province];
 
 }
 

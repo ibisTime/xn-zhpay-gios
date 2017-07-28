@@ -731,8 +731,6 @@
     http.parameters[@"token"] = [ZHUser user].token; //更新人
     http.parameters[@"companyCode"] = [ZHUser user].userId;
     
-    
-    
         NSMutableArray *parametersArr = [[NSMutableArray alloc] initWithCapacity:self.parameterModelArr.count];
         [self.parameterModelArr enumerateObjectsUsingBlock:^(CDGoodsParameterModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             [parametersArr addObject: [obj toDictionry]];

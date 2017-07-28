@@ -23,6 +23,7 @@
 
 @implementation CDOrderCategoryVC
 
+
 - (void)viewDidAppear:(BOOL)animated {
 
     [super viewDidAppear:animated];
@@ -37,11 +38,13 @@
 
     });
     
+    
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.navigationController.navigationBar.barTintColor = [UIColor orderThemeColor];
     self.isFirst = YES;
     
     self.automaticallyAdjustsScrollViewInsets = NO;

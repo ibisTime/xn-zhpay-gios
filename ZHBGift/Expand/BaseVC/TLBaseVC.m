@@ -44,7 +44,7 @@
        //店铺商品管理
         self.navigationController.navigationBar.barTintColor = [UIColor goodsThemeColor];
         
-    } else if ([self checkSelfClass:@[@"ZHOrderVC",@"CDOrderCategoryVC",@"CDOrderDetailVC"]]) {
+    } else if ([self checkSelfClass:@[@"ZHOrderVC",@"CDOrderDetailVC",@"CDOrderCategoryVC",@"CDOrderDetaiVC"]]) {
        //订单
       self.navigationController.navigationBar.barTintColor = [UIColor orderThemeColor];
     
