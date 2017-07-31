@@ -37,7 +37,7 @@
     [self uiInit];
     
     //配置环境
-    [AppConfig config].runEnv = RunEnvTest;
+    [AppConfig config].runEnv = RunEnvDev;
     
     //
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
@@ -50,7 +50,6 @@
     //键盘处理
     [self keyboardHandle];
     
-
 
     if([[ZHUser user] isLogin]){
         //开发更换根控制器

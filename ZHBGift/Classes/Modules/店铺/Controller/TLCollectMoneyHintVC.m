@@ -235,7 +235,6 @@
     [containerView addSubview:moneyLbl];
     self.moneyLbl = moneyLbl;
     
-    
     //timeLbl
     UILabel *timeLbl = [UILabel labelWithFrame:CGRectZero
                                    textAligment:NSTextAlignmentCenter

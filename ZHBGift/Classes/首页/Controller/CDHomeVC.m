@@ -347,6 +347,7 @@
         [self tl_placeholderOperation];
         
     }];
+    
     [self.navigationController pushViewController:vc animated:YES];
     
 
@@ -1234,6 +1235,7 @@
     [introduceBtn setTitle:@"新手入门" forState:UIControlStateNormal];
     [introduceBtn setTitleColor:HOME_TEXT_COLOR_1 forState:UIControlStateNormal];
     [introduceBtn addTarget:self action:@selector(introduce) forControlEvents:UIControlEventTouchUpInside];
+    introduceBtn.hidden = YES;
     
     
     //店铺状态

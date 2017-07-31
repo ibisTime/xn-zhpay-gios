@@ -25,7 +25,7 @@
 
     _goodsModel = goodsModel;
     
-    [self.coverImageView sd_setImageWithURL:[NSURL URLWithString:[_goodsModel.advPic convertThumbnailImageUrl]] placeholderImage:[UIImage imageNamed:@"goods_placeholder"]];
+    [self.coverImageView sd_setImageWithURL:[NSURL URLWithString:[_goodsModel.advPic convertImageUrl]] placeholderImage:[UIImage imageNamed:@"goods_placeholder"]];
     //
     self.nameLbl.text = _goodsModel.name;;
     
