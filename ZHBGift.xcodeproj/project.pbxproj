@@ -12,6 +12,7 @@
 		2E021C471E0BB55000758EFA /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E021C461E0BB55000758EFA /* MapKit.framework */; };
 		2E021C4C1E0BB64D00758EFA /* ZHMsgVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E021C4B1E0BB64D00758EFA /* ZHMsgVC.m */; };
 		2E021C511E0BB83800758EFA /* ZHMsgCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E021C501E0BB83800758EFA /* ZHMsgCell.m */; };
+		2E08258F1F30235900141645 /* readme.md in Sources */ = {isa = PBXBuildFile; fileRef = 2E08258E1F30235900141645 /* readme.md */; };
 		2E14A1F31E03CF9700383628 /* TLUploadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E14A1F21E03CF9700383628 /* TLUploadManager.m */; };
 		2E14A1F61E03DF1C00383628 /* TLImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E14A1F51E03DF1C00383628 /* TLImagePicker.m */; };
 		2E14A2021E050F1700383628 /* NSObject+convert.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E14A2011E050F1700383628 /* NSObject+convert.m */; };
@@ -215,6 +216,7 @@
 		2E021C4B1E0BB64D00758EFA /* ZHMsgVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHMsgVC.m; sourceTree = "<group>"; };
 		2E021C4F1E0BB83800758EFA /* ZHMsgCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHMsgCell.h; sourceTree = "<group>"; };
 		2E021C501E0BB83800758EFA /* ZHMsgCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHMsgCell.m; sourceTree = "<group>"; };
+		2E08258E1F30235900141645 /* readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = readme.md; sourceTree = "<group>"; };
 		2E14A1F11E03CF9700383628 /* TLUploadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLUploadManager.h; sourceTree = "<group>"; };
 		2E14A1F21E03CF9700383628 /* TLUploadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLUploadManager.m; sourceTree = "<group>"; };
 		2E14A1F41E03DF1C00383628 /* TLImagePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLImagePicker.h; sourceTree = "<group>"; };
@@ -906,6 +908,7 @@
 			children = (
 				2E22079C1DFE4C9E0021C365 /* AppDelegate.h */,
 				2E22079D1DFE4C9E0021C365 /* AppDelegate.m */,
+				2E08258E1F30235900141645 /* readme.md */,
 				2EEED9F31ED409B00077AD33 /* 首页 */,
 				2EEED9E71ED4068E0077AD33 /* Modules */,
 				2E220B671DFE5ECD0021C365 /* Home */,
@@ -1794,6 +1797,7 @@
 				2EFF1B321ED7C0B00024CB2D /* CDAccountApi.m in Sources */,
 				2EE3CB101DFEB088000B547C /* ZHAccountSetBaseVC.m in Sources */,
 				2EEED9F91ED409B00077AD33 /* CDHomeVC.m in Sources */,
+				2E08258F1F30235900141645 /* readme.md in Sources */,
 				2E202F421EE7F07700E38656 /* ZHShop.m in Sources */,
 				2EEF8D231EDE6DCD00453109 /* CDFHQTopBottomView.m in Sources */,
 				2E202F3C1EE7F07700E38656 /* CDShopMgtVC.m in Sources */,

@@ -29,15 +29,17 @@
 
 @end
 
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
+   
     //全局设置UI
     [self uiInit];
     
     //配置环境
-    [AppConfig config].runEnv = RunEnvDev;
+    [AppConfig config].runEnv = RunEnvRelease;
     
     //
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
