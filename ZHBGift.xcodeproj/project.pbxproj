@@ -12,6 +12,8 @@
 		2E021C471E0BB55000758EFA /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E021C461E0BB55000758EFA /* MapKit.framework */; };
 		2E021C4C1E0BB64D00758EFA /* ZHMsgVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E021C4B1E0BB64D00758EFA /* ZHMsgVC.m */; };
 		2E021C511E0BB83800758EFA /* ZHMsgCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E021C501E0BB83800758EFA /* ZHMsgCell.m */; };
+		2E0491781F34147200D059C9 /* ZHFalseHomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E0491771F34147200D059C9 /* ZHFalseHomeVC.m */; };
+		2E04917B1F341B4600D059C9 /* ZHCheckVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E04917A1F341B4600D059C9 /* ZHCheckVC.m */; };
 		2E08258F1F30235900141645 /* readme.md in Sources */ = {isa = PBXBuildFile; fileRef = 2E08258E1F30235900141645 /* readme.md */; };
 		2E14A1F31E03CF9700383628 /* TLUploadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E14A1F21E03CF9700383628 /* TLUploadManager.m */; };
 		2E14A1F61E03DF1C00383628 /* TLImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E14A1F51E03DF1C00383628 /* TLImagePicker.m */; };
@@ -216,6 +218,10 @@
 		2E021C4B1E0BB64D00758EFA /* ZHMsgVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHMsgVC.m; sourceTree = "<group>"; };
 		2E021C4F1E0BB83800758EFA /* ZHMsgCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHMsgCell.h; sourceTree = "<group>"; };
 		2E021C501E0BB83800758EFA /* ZHMsgCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHMsgCell.m; sourceTree = "<group>"; };
+		2E0491761F34147200D059C9 /* ZHFalseHomeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHFalseHomeVC.h; sourceTree = "<group>"; };
+		2E0491771F34147200D059C9 /* ZHFalseHomeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHFalseHomeVC.m; sourceTree = "<group>"; };
+		2E0491791F341B4600D059C9 /* ZHCheckVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHCheckVC.h; sourceTree = "<group>"; };
+		2E04917A1F341B4600D059C9 /* ZHCheckVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHCheckVC.m; sourceTree = "<group>"; };
 		2E08258E1F30235900141645 /* readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = readme.md; sourceTree = "<group>"; };
 		2E14A1F11E03CF9700383628 /* TLUploadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLUploadManager.h; sourceTree = "<group>"; };
 		2E14A1F21E03CF9700383628 /* TLUploadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLUploadManager.m; sourceTree = "<group>"; };
@@ -1352,6 +1358,10 @@
 		2EEED9F41ED409B00077AD33 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				2E0491791F341B4600D059C9 /* ZHCheckVC.h */,
+				2E04917A1F341B4600D059C9 /* ZHCheckVC.m */,
+				2E0491761F34147200D059C9 /* ZHFalseHomeVC.h */,
+				2E0491771F34147200D059C9 /* ZHFalseHomeVC.m */,
 				2EEED9F51ED409B00077AD33 /* CDHomeVC.h */,
 				2EEED9F61ED409B00077AD33 /* CDHomeVC.m */,
 				2E993FAF1EEB96F2005A53FE /* ZHSJIntroduceVC.h */,
@@ -1773,6 +1783,7 @@
 				2E202FA01EE7F12500E38656 /* ZHOrderModel.m in Sources */,
 				2EC462151E0E0B1100D1C4BE /* ZHMsg.m in Sources */,
 				2E4E8BAE1E1FA6EB00AC022A /* ZHCurrencyModel.m in Sources */,
+				2E0491781F34147200D059C9 /* ZHFalseHomeVC.m in Sources */,
 				2E202FFE1EEA496400E38656 /* ZHWithdrawalVC.m in Sources */,
 				2EE3CB751DFFEDA3000B547C /* ZHPhotosView.m in Sources */,
 				2E202F471EE7F07700E38656 /* CDShopMgtType2View.m in Sources */,
@@ -1826,6 +1837,7 @@
 				2E202F881EE7F08100E38656 /* CDGoodsMgtVC.m in Sources */,
 				2E202F401EE7F07700E38656 /* ZHShopUpgradeVC.m in Sources */,
 				2E202F951EE7F08100E38656 /* CDOrderCell.m in Sources */,
+				2E04917B1F341B4600D059C9 /* ZHCheckVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

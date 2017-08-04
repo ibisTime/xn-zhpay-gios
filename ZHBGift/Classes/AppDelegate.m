@@ -21,6 +21,8 @@
 #import "CDGoodsParameterModel.h"
 #import <AVFoundation/AVFoundation.h>
 #import "CDVoicePlayer.h"
+#import "ZHFalseHomeVC.h"
+#import "ZHCheckVC.h"
 
 
 @interface AppDelegate ()<CLLocationManagerDelegate>
@@ -52,24 +54,16 @@
     //键盘处理
     [self keyboardHandle];
     
+    [UIApplication sharedApplication].keyWindow.rootViewController = [[ZHNavigationController  alloc] initWithRootViewController:[[ZHCheckVC alloc] init]];
 
-    if([[ZHUser user] isLogin]){
-        //开发更换根控制器
-        self.window.rootViewController = [[ZHNavigationController alloc] initWithRootViewController:[[CDHomeVC alloc] init]];
-        
-    } else {
-        
-      self.window.rootViewController = [[ZHNavigationController alloc] initWithRootViewController:[[ZHUserLoginVC alloc] init]];
-    
-    }
 
     //登入
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userLogin) name:kUserLoginNotification object:nil];
     //用户登出
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userLoginOut) name:kUserLoginOutNotification object:nil];
     
-    [self pushInitWithOption:launchOptions];
-
+    
+//  [self pushInitWithOption:launchOptions];
 
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
 
@@ -81,7 +75,7 @@
 - (void)pushInitWithOption:(NSDictionary *)launchOptions {
 
     //push
-    [self jpushInitWithLaunchOption:launchOptions];
+//    [self jpushInitWithLaunchOption:launchOptions];
 
     
 }
@@ -121,7 +115,8 @@
     
 //     self.window.rootViewController = [[ZHNavigationController alloc] initWithRootViewController:[[ZHHomeVC alloc] init]];
     //开发更换根控制器
-    self.window.rootViewController = [[ZHNavigationController alloc] initWithRootViewController:[[CDHomeVC alloc] init]];
+    self.window.rootViewController = [[ZHNavigationController alloc] initWithRootViewController:[[[AppConfig config].homeVCClass alloc] init]];
+    
 }
 
 - (void)userLoginOut {
@@ -145,22 +140,21 @@
 }
 
 
-
 #pragma mark- 推送相关
-- (void)application:(UIApplication *)application
-didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-    
-    /// Required - 注册 DeviceToken
-    [self jpushRegisterDeviceToken:deviceToken];
-    
-    if ([ZHUser user].userId) {
-        
-        [JPUSHService setAlias:[ZHUser user].userId callbackSelector:nil object:nil];
-
-    }
-
-    
-}
+//- (void)application:(UIApplication *)application
+//didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+//    
+//    /// Required - 注册 DeviceToken
+//    [self jpushRegisterDeviceToken:deviceToken];
+//    
+//    if ([ZHUser user].userId) {
+//        
+//        [JPUSHService setAlias:[ZHUser user].userId callbackSelector:nil object:nil];
+//
+//    }
+//
+//    
+//}
 
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
 
@@ -241,37 +235,14 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
   
 }
 
-- (void)application:(UIApplication *)application
-didReceiveLocalNotification:(UILocalNotification *)notification {
-    
-    [self jpushDidReceiveLocalNotification:notification];
-    
-}
+//- (void)application:(UIApplication *)application
+//didReceiveLocalNotification:(UILocalNotification *)notification {
+//    
+//    [self jpushDidReceiveLocalNotification:notification];
+//    
+//}
 
 
-- (void)applicationWillTerminate:(UIApplication *)application {
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    
-    UIApplication*   app = [UIApplication sharedApplication];
-    __block    UIBackgroundTaskIdentifier bgTask;
-    bgTask = [app beginBackgroundTaskWithExpirationHandler:^{
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if (bgTask != UIBackgroundTaskInvalid)
-            {
-                bgTask = UIBackgroundTaskInvalid;
-            }
-        });
-    }];
-    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if (bgTask != UIBackgroundTaskInvalid)
-            {
-                bgTask = UIBackgroundTaskInvalid;
-            }
-        });
-    });
-    
-}
+
 
 @end
