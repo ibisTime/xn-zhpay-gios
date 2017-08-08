@@ -23,6 +23,7 @@
 #import "CDGoodsMgtVC.h"
 #import "CDAccountApi.h"
 #import "ZHAccountAboutVC.h"
+#import "CDShopMgtVC.h"
 
 //
 @interface ZHFalseHomeVC ()
@@ -337,13 +338,11 @@
             break;
         case 2:{
             
-            CDGoodsMgtVC *vc = [CDGoodsMgtVC new];
+            CDShopMgtVC *vc = [CDShopMgtVC new];
             [self.navigationController pushViewController:vc animated:YES];
             
-            vc.navigationController.navigationBar.barTintColor = [UIColor goodsThemeColor];
            
          
-            
         }
             break;
             
