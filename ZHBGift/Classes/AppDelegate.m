@@ -9,14 +9,17 @@
 #import "ZHNavigationController.h"
 #import "ZHUserLoginVC.h"
 #import <CoreLocation/CoreLocation.h>
-#import "AppDelegate+JPush.h"
+//#import "AppDelegate+JPush.h"
 #import "IQKeyboardManager.h"
 #import "ZHUserRegistVC.h"
 #import "ZHUserForgetPwdVC.h"
-#import "UMMobClick/MobClick.h"
+//#import "UMMobClick/MobClick.h"
 #import "AppConfig.h"
 #import "CDHomeVC.h"
-#import "ZHBillVC.h"
+#import "UIHeader.h"
+#import "UserHeader.h"
+#import "TLNetworking.h"
+#import "AppCopyConfig.h"
 #import "CDShopMgtVC.h"
 #import "CDGoodsParameterModel.h"
 #import <AVFoundation/AVFoundation.h>
@@ -40,8 +43,22 @@
     //全局设置UI
     [self uiInit];
     
+    
+    
     //配置环境
     [AppConfig config].runEnv = RunEnvRelease;
+    
+    
+    [AppCopyConfig config].runEnv = [AppConfig config].runEnv;
+    
+    [AppCopyConfig config].addr = [AppConfig config].addr;
+    [AppCopyConfig config].qiniuDomain = [AppConfig config].qiniuDomain;
+    [AppCopyConfig config].shareBaseUrl = [AppConfig config].shareBaseUrl;
+    [AppCopyConfig config].userKind = [AppConfig config].userKind;
+    [AppCopyConfig config].terminalType = [AppConfig config].terminalType;
+    [AppCopyConfig config].pushKey = [AppConfig config].pushKey;
+    [AppCopyConfig config].qiNiuKey = [AppConfig config].qiNiuKey;
+    [AppCopyConfig config].realNameAuthBackUrl = [AppConfig config].realNameAuthBackUrl;
     
     //
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
@@ -110,8 +127,6 @@
 
 - (void)userLogin {
     
-    //注册推送别名
-    [JPUSHService setAlias:[ZHUser user].userId callbackSelector:nil object:nil];
     
 //     self.window.rootViewController = [[ZHNavigationController alloc] initWithRootViewController:[[ZHHomeVC alloc] init]];
     //开发更换根控制器
@@ -121,8 +136,6 @@
 
 - (void)userLoginOut {
 
-    //取消推送别名
-    [JPUSHService setAlias:@"" callbackSelector:nil object:nil];
 
 
     [[ZHUser user] loginOut];
@@ -140,21 +153,7 @@
 }
 
 
-#pragma mark- 推送相关
-//- (void)application:(UIApplication *)application
-//didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-//    
-//    /// Required - 注册 DeviceToken
-//    [self jpushRegisterDeviceToken:deviceToken];
-//    
-//    if ([ZHUser user].userId) {
-//        
-//        [JPUSHService setAlias:[ZHUser user].userId callbackSelector:nil object:nil];
-//
-//    }
-//
-//    
-//}
+
 
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
 
@@ -228,19 +227,13 @@
  
     
     
-    [self jpushDidReceiveRemoteNotification:userInfo];
     completionHandler(UIBackgroundFetchResultNewData);
     
 
   
 }
 
-//- (void)application:(UIApplication *)application
-//didReceiveLocalNotification:(UILocalNotification *)notification {
-//    
-//    [self jpushDidReceiveLocalNotification:notification];
-//    
-//}
+
 
 
 

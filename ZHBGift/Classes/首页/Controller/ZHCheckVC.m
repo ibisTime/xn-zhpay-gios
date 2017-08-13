@@ -12,6 +12,9 @@
 #import "ZHUserLoginVC.h"
 #import "AppConfig.h"
 #import "ZHFalseHomeVC.h"
+#import "TLHeader.h"
+#import "ZHGiftHeader.h"
+#import "UserHeader.h"
 
 @interface ZHCheckVC ()
 

@@ -8,7 +8,6 @@
 
 #import "CDHomeVC.h"
 #import "CDHomeOperationCell.h"
-#import "ZHCouponsAddVC.h"
 #import "CDShopMgtVC.h"
 #import "ZHGoodsListVC.h"
 #import "ZHOrderVC.h"
@@ -32,6 +31,10 @@
 #import "TLCollectMoneyHintVC.h"
 #import "ZHRealNameAuthVC.h"
 #import "ZHBillTypeChooseVC.h"
+#import "TLHeader.h"
+#import "UserHeader.h"
+#import "UIHeader.h"
+#import "ZHGiftHeader.h"
 
 
 

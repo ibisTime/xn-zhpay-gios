@@ -15,47 +15,56 @@ PODS:
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
   - HappyDNS (0.3.10)
-  - IQKeyboardManager (4.0.10)
+  - IQKeyboardManager (4.0.7)
   - Masonry (1.0.2)
   - MJExtension (3.0.13)
   - MJRefresh (3.1.12)
-  - Qiniu (7.1.5):
+  - Qiniu (7.1.4):
     - AFNetworking (~> 3)
     - HappyDNS (~> 0.3)
   - RTRootNavigationController (0.5.26):
     - RTRootNavigationController/Core (= 0.5.26)
   - RTRootNavigationController/Core (0.5.26)
-  - SDWebImage (4.0.0):
-    - SDWebImage/Core (= 4.0.0)
-  - SDWebImage/Core (4.0.0)
+  - SDWebImage (3.8.2):
+    - SDWebImage/Core (= 3.8.2)
+  - SDWebImage/Core (3.8.2)
   - SVProgressHUD (2.1.2)
-  - UMengAnalytics-NO-IDFA (4.2.5)
+  - ZHMerchant (0.0.1):
+    - AFNetworking (= 3.1.0)
+    - IQKeyboardManager (= 4.0.7)
+    - Masonry (= 1.0.2)
+    - MJExtension (= 3.0.13)
+    - MJRefresh (= 3.1.12)
+    - Qiniu (= 7.1.4)
+    - RTRootNavigationController (= 0.5.26)
+    - SDWebImage (= 3.8.2)
+    - SVProgressHUD (= 2.1.2)
 
 DEPENDENCIES:
-  - AFNetworking
-  - IQKeyboardManager
-  - Masonry
-  - MJExtension
-  - MJRefresh
-  - Qiniu
-  - RTRootNavigationController
-  - SDWebImage
-  - SVProgressHUD
-  - UMengAnalytics-NO-IDFA
+  - ZHMerchant (from `../ZHB/ZHMerchant.podspec`)
+
+EXTERNAL SOURCES:
+  ZHMerchant:
+    :podspec: "../ZHB/ZHMerchant.podspec"
+
+CHECKOUT OPTIONS:
+  ZHMerchant:
+    :commit: 9aa094d320dfa058ae9014e9ac80ec9accc1e3d5
+    :git: "/Users/tianlei/Desktop/ZH2/ZHB"
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   HappyDNS: 06a9fed2796663fd87626dbf02552933265bf059
-  IQKeyboardManager: 593ee99b88381f4b9ccb22bd680f22606351bd41
+  IQKeyboardManager: 69002bb4fea60596b710e57d426abc00e5063630
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MJExtension: 5932755f451458eefa24239358817f8d291240c7
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
-  Qiniu: 77a3dba411556a383d72d17e842345a9d4c83252
+  Qiniu: a4c962782035ee25b9da3e195181d8c384bb75be
   RTRootNavigationController: 153e538439fa20faec706019b04375f6c6fabeb6
-  SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
+  SDWebImage: '098e97e6176540799c27e804c96653ee0833d13c'
   SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
-  UMengAnalytics-NO-IDFA: 16666e32edce5be44ae5b14aaaa7f3582e09d6ab
+  ZHMerchant: 7fcd0b055a8c544da53544c438d08baba61c155f
 
-PODFILE CHECKSUM: 958b18d101e6b665f670481c3d92b33c1244e01b
+PODFILE CHECKSUM: a94dfac16e796057ae58fa0bc5fe8aa678413dc5
 
 COCOAPODS: 1.2.1
