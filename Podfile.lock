@@ -29,7 +29,7 @@ PODS:
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
   - SVProgressHUD (2.1.2)
-  - ZHMerchant (0.0.1):
+  - ZHMerchant (0.0.2):
     - AFNetworking (= 3.1.0)
     - IQKeyboardManager (= 4.0.7)
     - Masonry (= 1.0.2)
@@ -49,7 +49,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   ZHMerchant:
-    :commit: 9aa094d320dfa058ae9014e9ac80ec9accc1e3d5
+    :commit: 6c19ce552043ac4b554b0fcba191e22352eb3034
     :git: "/Users/tianlei/Desktop/ZH2/ZHB"
 
 SPEC CHECKSUMS:
@@ -63,7 +63,7 @@ SPEC CHECKSUMS:
   RTRootNavigationController: 153e538439fa20faec706019b04375f6c6fabeb6
   SDWebImage: '098e97e6176540799c27e804c96653ee0833d13c'
   SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
-  ZHMerchant: 7fcd0b055a8c544da53544c438d08baba61c155f
+  ZHMerchant: 85e0233c7afe9ed528c134099543181cc3761b15
 
 PODFILE CHECKSUM: a94dfac16e796057ae58fa0bc5fe8aa678413dc5
 

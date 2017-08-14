@@ -39,6 +39,7 @@
 		2EFA51CF1F4072CC00F7B195 /* ZHBillTypeChooseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFA51CB1F4072CC00F7B195 /* ZHBillTypeChooseVC.m */; };
 		2EFA51D01F4072CC00F7B195 /* ZHBillVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFA51CD1F4072CC00F7B195 /* ZHBillVC.m */; };
 		2EFA51D31F4072E200F7B195 /* ZHWalletView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFA51D21F4072E200F7B195 /* ZHWalletView.m */; };
+		2EFA51DC1F413CB100F7B195 /* Address.json in Resources */ = {isa = PBXBuildFile; fileRef = 2EFA51DB1F413CB100F7B195 /* Address.json */; };
 		BEC4264A825DC7B86064FF1F /* libPods-ZHBGift.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 10921CE2856D0DC02A8CCC41 /* libPods-ZHBGift.a */; };
 /* End PBXBuildFile section */
 
@@ -114,6 +115,7 @@
 		2EFA51D11F4072E200F7B195 /* ZHWalletView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHWalletView.h; sourceTree = "<group>"; };
 		2EFA51D21F4072E200F7B195 /* ZHWalletView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHWalletView.m; sourceTree = "<group>"; };
 		2EFA51D41F4074E800F7B195 /* ZHGiftHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZHGiftHeader.h; sourceTree = "<group>"; };
+		2EFA51DB1F413CB100F7B195 /* Address.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Address.json; sourceTree = "<group>"; };
 		3336CAF2FA867F81880DD53F /* libPods-ZHBusiness.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZHBusiness.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		533401E23F0B6237388FEF36 /* Pods-ZHBGift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZHBGift.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZHBGift/Pods-ZHBGift.release.xcconfig"; sourceTree = "<group>"; };
 		7F5FB39F2CA8A973CCF43656 /* Pods-ZHBusiness.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZHBusiness.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZHBusiness/Pods-ZHBusiness.release.xcconfig"; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				2E22079C1DFE4C9E0021C365 /* AppDelegate.h */,
 				2E22079D1DFE4C9E0021C365 /* AppDelegate.m */,
 				2E08258E1F30235900141645 /* readme.md */,
+				2EFA51DB1F413CB100F7B195 /* Address.json */,
 				2EFA51D41F4074E800F7B195 /* ZHGiftHeader.h */,
 				2EFA51C11F4071B500F7B195 /* AppConfig */,
 				2EFA51BC1F4070B000F7B195 /* 礼品商账单 */,
@@ -381,6 +384,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2E2264271E4C49D900C7126E /* LaunchScreen.storyboard in Resources */,
+				2EFA51DC1F413CB100F7B195 /* Address.json in Resources */,
 				2EB55F271DFE4B2400B58120 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

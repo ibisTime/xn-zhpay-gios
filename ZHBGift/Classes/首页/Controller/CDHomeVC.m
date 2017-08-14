@@ -654,7 +654,7 @@
     shopOpModel.funcName = @"店铺管理";
     shopOpModel.operationName = @"编辑";
     shopOpModel.leftText = @"营业中";
-    shopOpModel.middleText = @"消费记录查询";
+    shopOpModel.middleText = @"语音播报";
     shopOpModel.rightText = @"礼品商";
     
     [shopOpModel setMainAction:^{
@@ -667,9 +667,11 @@
     
   
     [shopOpModel setMiddleAction:^{
-        
-        [weakself.navigationController pushViewController:[CDConsumptionFlowVC new] animated:YES];
-        weakself.navigationController.navigationBar.barTintColor = [UIColor shopThemeColor];
+//        
+//        [weakself.navigationController pushViewController:[CDConsumptionFlowVC new] animated:YES];
+//        weakself.navigationController.navigationBar.barTintColor = [UIColor shopThemeColor];
+        TLCollectMoneyHintVC *vc = [[TLCollectMoneyHintVC alloc] init];
+        [weakself.navigationController pushViewController:vc animated:YES];
 
     }];
     
@@ -1026,12 +1028,12 @@
     self.withdrawBtn.titleLabel.font = FONT(15);
     
     //语音播报
-    UIButton *voicePlayBtn = [[UIButton alloc] init];
-    [self.scrollContentView addSubview:voicePlayBtn];
-    [voicePlayBtn addTarget:self action:@selector(voicePlay) forControlEvents:UIControlEventTouchUpInside];
-    [voicePlayBtn setTitle:@"语音播报" forState:UIControlStateNormal];
-    [voicePlayBtn setTitleColor:HOME_TEXT_COLOR_1 forState:UIControlStateNormal];
-    voicePlayBtn.titleLabel.font = FONT(15);
+//    UIButton *voicePlayBtn = [[UIButton alloc] init];
+//    [self.scrollContentView addSubview:voicePlayBtn];
+//    [voicePlayBtn addTarget:self action:@selector(voicePlay) forControlEvents:UIControlEventTouchUpInside];
+//    [voicePlayBtn setTitle:@"语音播报" forState:UIControlStateNormal];
+//    [voicePlayBtn setTitleColor:HOME_TEXT_COLOR_1 forState:UIControlStateNormal];
+//    voicePlayBtn.titleLabel.font = FONT(15);
  
     
     //营业额
@@ -1102,18 +1104,18 @@
     //提现
     [self.withdrawBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         
-        make.right.equalTo(voicePlayBtn.mas_left).offset(-20);
+        make.right.equalTo(self.scrollContentView.mas_right).offset(-20);
         make.top.equalTo(self.phoneLbl.mas_bottom).offset(15);
         make.width.greaterThanOrEqualTo(@50);
     }];
     
-    [voicePlayBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        
-        make.right.equalTo(self.scrollContentView.mas_right).offset(-10);
-        make.top.equalTo(self.withdrawBtn.mas_top);
-        make.left.greaterThanOrEqualTo(self.withdrawBtn.mas_right);
-
-    }];
+//    [voicePlayBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+//        
+//        make.right.equalTo(self.scrollContentView.mas_right).offset(-10);
+//        make.top.equalTo(self.withdrawBtn.mas_top);
+//        make.left.greaterThanOrEqualTo(self.withdrawBtn.mas_right);
+//
+//    }];
     
     //累计营业额
     [self.totalTurnoverLbl mas_makeConstraints:^(MASConstraintMaker *make) {

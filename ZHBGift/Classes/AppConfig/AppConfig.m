@@ -66,7 +66,7 @@
 
 - (NSString *)realNameAuthBackUrl {
 
-     return  @"zhsj://certi.back";
+     return  @"zhlps://certi.back";
 
 }
 
@@ -84,7 +84,7 @@
 }
 - (NSString *)userKind {
 
-   return @"f2";
+    return @"f3";
     
 }
 

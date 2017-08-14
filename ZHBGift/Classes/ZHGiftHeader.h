@@ -9,7 +9,8 @@
 #ifndef ZHGiftHeader_h
 #define ZHGiftHeader_h
 
-#define APP_ID @"1167284616"
+#define TERMINAL_TYPE @"B"
+#define APP_ID @"1264435742"
 #define OLD_VERSION @"4.0.0"
 #define APP_NAME @"%E6%AD%A3%E6%B1%87%E5%95%86%E5%AE%B6"
 
