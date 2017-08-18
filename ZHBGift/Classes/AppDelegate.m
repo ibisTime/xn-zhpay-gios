@@ -9,11 +9,9 @@
 #import "ZHNavigationController.h"
 #import "ZHUserLoginVC.h"
 #import <CoreLocation/CoreLocation.h>
-//#import "AppDelegate+JPush.h"
 #import "IQKeyboardManager.h"
 #import "ZHUserRegistVC.h"
 #import "ZHUserForgetPwdVC.h"
-//#import "UMMobClick/MobClick.h"
 #import "AppConfig.h"
 #import "CDHomeVC.h"
 #import "UIHeader.h"
@@ -25,7 +23,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "CDVoicePlayer.h"
 #import "ZHFalseHomeVC.h"
-#import "ZHCheckVC.h"
+#import "TLUpdateVC.h"
 
 
 @interface AppDelegate ()<CLLocationManagerDelegate>
@@ -46,7 +44,7 @@
     
     
     //配置环境
-    [AppConfig config].runEnv = RunEnvDev;
+    [AppConfig config].runEnv = RunEnvTest;
     
     
     [AppCopyConfig config].runEnv = [AppConfig config].runEnv;
@@ -71,7 +69,7 @@
     //键盘处理
     [self keyboardHandle];
     
-    [UIApplication sharedApplication].keyWindow.rootViewController = [[ZHNavigationController  alloc] initWithRootViewController:[[ZHCheckVC alloc] init]];
+    [UIApplication sharedApplication].keyWindow.rootViewController = [[TLUpdateVC alloc] init];
 
 
     //登入

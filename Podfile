@@ -10,8 +10,8 @@ target 'ZHBGift' do
         
         # Pods for ZHBGiftTest
         
-        pod 'ZHMerchant', :podspec => '../ZHB/ZHMerchant.podspec'
-        
+      pod 'ZHMerchant', :podspec => '../ZHB/ZHMerchant.podspec'
+
 
 end
 
