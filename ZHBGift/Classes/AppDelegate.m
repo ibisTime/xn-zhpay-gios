@@ -44,7 +44,7 @@
     
     
     //配置环境
-    [AppConfig config].runEnv = RunEnvTest;
+    [AppConfig config].runEnv = RunEnvRelease;
     
     
     [AppCopyConfig config].runEnv = [AppConfig config].runEnv;
