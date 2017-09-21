@@ -60,19 +60,23 @@
 /**
  分润余额
  */
-@property (nonatomic, strong) UILabel *balanceLbl;
+//@property (nonatomic, strong) UILabel *balanceLbl;
+
+@property (nonatomic, strong) UILabel *giftBalanceLbl;
+
+@property (nonatomic, strong) UILabel *buTieBalanceLbl;
 
 /**
  礼品券余额
  */
-@property (nonatomic, strong) UILabel *giftBalanceLbl;
+//@property (nonatomic, strong) UILabel *giftBalanceLbl;
 
 
 @property (nonatomic, strong) UIButton *withdrawBtn;
 @property (nonatomic, strong) UILabel *totalTurnoverLbl;
-@property (nonatomic, strong) UILabel *hasWithdrawLbl;
-@property (nonatomic, strong) UILabel *totalProfitLbl;
-@property (nonatomic, strong) UILabel *profitCountLbl;
+//@property (nonatomic, strong) UILabel *hasWithdrawLbl;
+//@property (nonatomic, strong) UILabel *totalProfitLbl;
+//@property (nonatomic, strong) UILabel *profitCountLbl;
 
 @property (nonatomic, strong) TLMarqueeView *sysMsgView;
 
@@ -90,14 +94,15 @@
 @property (nonatomic, strong) UITableView *opTableView;
 
 //请求数据
-@property (nonatomic, strong) ZHCurrencyModel *FRBModel;
-@property (nonatomic, strong) ZHCurrencyModel *GiftBModel;
+//@property (nonatomic, strong) ZHCurrencyModel *FRBModel;
+//@property (nonatomic, strong) ZHCurrencyModel *GiftBModel;
 
 @property (nonatomic, strong) CDGoodsAndOrderCountModel *goodsAndOrderCountModel;
 @property (nonatomic, strong) CDHomeAccountInfoModel *accountInfModel;
 
 @property (nonatomic, copy) NSString *sysMsgTitle;
 @property (nonatomic, copy) NSString *sysMsgContent;
+@property (nonatomic, copy) NSArray <ZHCurrencyModel *> *currencyRoom;
 
 
 //帮助首次刷新判断，是否已经添加店铺
@@ -149,62 +154,62 @@
 }
 
 
-- (void)updateApp {
-    
-    
-    return;
-    [TLNetworking GET:[NSString stringWithFormat:@"http://itunes.apple.com/lookup?id=%@",APP_ID] parameters:nil success:^(NSString *msg, id data) {
-        
-        //线上版本
-        NSString *versionStr = data[@"results"][0][@"version"];
-        //版本号不同就要更新
-        if (![versionStr isEqualToString:OLD_VERSION] && ![versionStr isEqualToString:[NSString appCurrentBundleVersion]]) {
-            
-            //此版本是否用户拒绝跟新
-            NSString *updateValue = [[NSUserDefaults standardUserDefaults] stringForKey:@"update_app_key"];
-            if(updateValue && [updateValue isEqualToString:versionStr]) {
-            
-                return ;
-            }
-            
-            UIAlertController *alertCtrl = [UIAlertController alertControllerWithTitle:@"应用更新"
-                                                                               message:[NSString stringWithFormat:@"最新版本为：%@",versionStr]
- preferredStyle:UIAlertControllerStyleAlert];
-            
-            //
-            UIAlertAction *updateAction = [UIAlertAction actionWithTitle:@"前往更新" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                
-                NSString *appName = APP_NAME;
-                NSString *urlStr = [NSString stringWithFormat:@"https://itunes.apple.com/cn/app/%@/id%@?mt=8",appName,APP_ID];
-                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr]];
-                
-            }];
-            
-            //
-            UIAlertAction *cancleAction = [UIAlertAction actionWithTitle:@"稍后更新" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                
-            }];
-            
-            //
-            UIAlertAction *noHintUpdateAction = [UIAlertAction actionWithTitle:@"不在提示" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                
-                [[NSUserDefaults standardUserDefaults] setObject:versionStr forKey:@"update_app_key"];
-                
-            }];
-            
-            //
-            [alertCtrl addAction:updateAction];
-            [alertCtrl addAction:cancleAction];
-            [alertCtrl addAction:noHintUpdateAction];
-            
-            //
-            [self presentViewController:alertCtrl animated:YES completion:nil];
-            
-        }
-        
-    } abnormality:nil failure:nil];
-    
-}
+//- (void)updateApp {
+//
+//
+//    return;
+//    [TLNetworking GET:[NSString stringWithFormat:@"http://itunes.apple.com/lookup?id=%@",APP_ID] parameters:nil success:^(NSString *msg, id data) {
+//
+//        //线上版本
+//        NSString *versionStr = data[@"results"][0][@"version"];
+//        //版本号不同就要更新
+//        if (![versionStr isEqualToString:OLD_VERSION] && ![versionStr isEqualToString:[NSString appCurrentBundleVersion]]) {
+//
+//            //此版本是否用户拒绝跟新
+//            NSString *updateValue = [[NSUserDefaults standardUserDefaults] stringForKey:@"update_app_key"];
+//            if(updateValue && [updateValue isEqualToString:versionStr]) {
+//
+//                return ;
+//            }
+//
+//            UIAlertController *alertCtrl = [UIAlertController alertControllerWithTitle:@"应用更新"
+//                                                                               message:[NSString stringWithFormat:@"最新版本为：%@",versionStr]
+// preferredStyle:UIAlertControllerStyleAlert];
+//
+//            //
+//            UIAlertAction *updateAction = [UIAlertAction actionWithTitle:@"前往更新" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//
+//                NSString *appName = APP_NAME;
+//                NSString *urlStr = [NSString stringWithFormat:@"https://itunes.apple.com/cn/app/%@/id%@?mt=8",appName,APP_ID];
+//                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr]];
+//
+//            }];
+//
+//            //
+//            UIAlertAction *cancleAction = [UIAlertAction actionWithTitle:@"稍后更新" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//
+//            }];
+//
+//            //
+//            UIAlertAction *noHintUpdateAction = [UIAlertAction actionWithTitle:@"不在提示" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//
+//                [[NSUserDefaults standardUserDefaults] setObject:versionStr forKey:@"update_app_key"];
+//
+//            }];
+//
+//            //
+//            [alertCtrl addAction:updateAction];
+//            [alertCtrl addAction:cancleAction];
+//            [alertCtrl addAction:noHintUpdateAction];
+//
+//            //
+//            [self presentViewController:alertCtrl animated:YES completion:nil];
+//
+//        }
+//
+//    } abnormality:nil failure:nil];
+//
+//}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -251,11 +256,6 @@
     //判断有无店铺——Important
     [self firstStepGetShopInfo];
 
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        
-        [self updateApp];
-        
-    });
  
     
 }//-----------//
@@ -463,19 +463,25 @@
     
     
     //
+    //查询账户信息
     requestCount ++;
     dispatch_group_enter(_topDataGroup);
-    [CDAccountApi getFRBWSuccess:^(ZHCurrencyModel *FRBCurrency,ZHCurrencyModel *GiftBCurrency) {
+    TLNetworking *currencyRoomHttp = [TLNetworking new];
+    currencyRoomHttp.code = @"802503";
+    currencyRoomHttp.isShowMsg = YES;
+    currencyRoomHttp.parameters[@"token"] = [ZHUser user].token;
+    currencyRoomHttp.parameters[@"userId"] = [ZHUser user].userId;
+    [currencyRoomHttp postWithSuccess:^(id responseObject) {
         topDataSuccessCount ++;
         dispatch_group_leave(_topDataGroup);
         
-        self.FRBModel = FRBCurrency;
-        self.GiftBModel = GiftBCurrency;
+        //
+        self.currencyRoom = [ZHCurrencyModel tl_objectArrayWithDictionaryArray:responseObject[@"data"]];
         
-        
-    } failure:^(NSError *err) {
+    } failure:^(NSError *error) {
         
         dispatch_group_leave(_topDataGroup);
+        
         
     }];
     
@@ -585,7 +591,15 @@
         //        todayMoneyChangeHttp.isShowMsg = NO;
         todayMoneyChangeHttp.code = @"802901";
         todayMoneyChangeHttp.parameters[@"userId"] = [ZHUser user].userId;
-        todayMoneyChangeHttp.parameters[@"accountNumber"] = self.FRBModel.accountNumber;
+        
+        [self.currencyRoom enumerateObjectsUsingBlock:^(ZHCurrencyModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            
+            if ([obj.currency isEqualToString:kFRB]) {
+                
+                todayMoneyChangeHttp.parameters[@"accountNumber"] = obj.accountNumber;
+                
+            }
+        }];
         
         //
         NSDateFormatter *formatter = [NSDateFormatter new];
@@ -784,17 +798,26 @@
     self.shopTypeLbl.text = [ZHShop shop].isGongYi ? @"类型：礼品商" : @"类型：礼品商";
 
     //
-    self.balanceLbl.attributedText = [self formatAmount:self.FRBModel.amount unit:@"￥"];
-    self.giftBalanceLbl.attributedText = [self formatAmount:self.GiftBModel.amount unit:@"礼品券"];
+    [self.currencyRoom enumerateObjectsUsingBlock:^(ZHCurrencyModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        
+        if ([obj.currency isEqualToString:@"BTB"]) {
+            
+            self.buTieBalanceLbl.attributedText = [self formatAmount:obj.amount unit:@""];
+            
+        } else if ([obj.currency isEqualToString:@"LPQ"]) {
+            
+            self.giftBalanceLbl.attributedText = [self formatAmount:obj.amount unit:@""];
+
+        }
+        
+    }];
     
-    
-//    [self formatString:[self.FRBModel.amount convertToRealMoney]];
     
     //
     self.totalTurnoverLbl.text = [NSString stringWithFormat:@"累计营业额 %@",[self.accountInfModel.totalTurnover convertToRealMoney]];
-    self.hasWithdrawLbl.text = [NSString stringWithFormat:@"已提现 %@",[self.FRBModel.outAmount convertToRealMoney]];
-    self.totalProfitLbl.text = [NSString stringWithFormat:@"累计分红收益 %@",[self.accountInfModel.totalProfit convertToRealMoney]];
-    self.profitCountLbl.text = [NSString stringWithFormat:@"分红权 %@个",self.accountInfModel.mineProfitCount];
+//    self.hasWithdrawLbl.text = [NSString stringWithFormat:@"已提现 %@",[self.FRBModel.outAmount convertToRealMoney]];
+//    self.totalProfitLbl.text = [NSString stringWithFormat:@"累计分红收益 %@",[self.accountInfModel.totalProfit convertToRealMoney]];
+//    self.profitCountLbl.text = [NSString stringWithFormat:@"分红权 %@个",self.accountInfModel.mineProfitCount];
 
     //
     self.sysMsgView.msg = [NSString stringWithFormat:@"公告：%@",self.sysMsgTitle];
@@ -959,6 +982,12 @@
 }
 
 - (void)sysMsgUI {
+    
+    
+    UIView *line = [[UIView alloc] init];
+    line.backgroundColor = HOME_TEXT_COLOR_1;
+    [self.scrollContentView addSubview:line];
+    //
 
     
     self.sysMsgView =[[TLMarqueeView alloc] initWithFrame:CGRectMake(TOP_LEFT_MARGIN, 210, SCREEN_WIDTH - TOP_LEFT_MARGIN, 20)];
@@ -982,19 +1011,48 @@
     }];
     
     //
+    [line mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.left.equalTo(self.scrollContentView.mas_left).offset(TOP_LEFT_MARGIN);
+        make.right.equalTo(self.scrollContentView.mas_right).offset(-15);
+        make.bottom.equalTo(self.sysMsgView.mas_top).offset(-10);
+        make.height.mas_equalTo(1);
+        
+    }];
+    
+    //
     UIButton *maskBtn = [[UIButton alloc] initWithFrame:CGRectZero];
     [self.view addSubview:maskBtn];
     [maskBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         
         make.left.equalTo(self.scrollContentView.mas_left);
         make.width.mas_equalTo(SCREEN_WIDTH - TOP_LEFT_MARGIN);
-        make.top.equalTo(self.totalProfitLbl.mas_bottom).offset(10);
-        make.height.mas_equalTo(@40);
+        make.top.equalTo(self.sysMsgView.mas_top);
+        make.bottom.equalTo(self.sysMsgView.mas_bottom);
+
         
     }];
     //
     [maskBtn addTarget:self action:@selector(lookSysMsg) forControlEvents:UIControlEventTouchUpInside];
 
+}
+
+#pragma mark-补贴提现
+- (void)buTieWithdrawAction {
+    
+    
+    ZHWithdrawalVC *vc = [[ZHWithdrawalVC alloc] init];
+    [self.currencyRoom enumerateObjectsUsingBlock:^(ZHCurrencyModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        
+        if ([obj.currency isEqualToString:@"BTB"]) {
+            vc.accountNum = obj.accountNumber;
+            *stop = YES;
+        }
+        
+    }];
+    vc.navigationController.navigationBar.barTintColor = [UIColor billThemeColor];
+    [self.navigationController pushViewController:vc animated:YES];
+    
 }
 
 - (void)accountUI {
@@ -1004,157 +1062,293 @@
     self.accountImageView.image = [UIImage imageNamed:@"home_time"];
     
     UIColor *textColr = HOME_TEXT_COLOR_2;
-    //余额 18 38 18
-    self.balanceLbl = [UILabel labelWithFrame:CGRectZero
-                                  textAligment:NSTextAlignmentLeft
-                               backgroundColor:[UIColor clearColor]
-                                          font:FONT(20)
-                                     textColor:textColr];
-    [self.scrollContentView addSubview:self.balanceLbl];
     
+    //货款
+    UILabel *daiKuanLbl = [UILabel labelWithFrame:CGRectZero
+                                     textAligment:NSTextAlignmentLeft
+                                  backgroundColor:[UIColor clearColor]
+                                             font:FONT(20)
+                                        textColor:textColr];
+    [self.scrollContentView addSubview:daiKuanLbl];
+    daiKuanLbl.text = @"礼品券";
+    
+    //余额 18 38 18
     self.giftBalanceLbl = [UILabel labelWithFrame:CGRectZero
-                                 textAligment:NSTextAlignmentLeft
-                              backgroundColor:[UIColor clearColor]
-                                         font:FONT(18)
-                                    textColor:textColr];
+                                        textAligment:NSTextAlignmentLeft
+                                     backgroundColor:[UIColor clearColor]
+                                                font:FONT(25)
+                                           textColor:textColr];
     [self.scrollContentView addSubview:self.giftBalanceLbl];
+    self.giftBalanceLbl.text  = @"--";
     
     //提现按钮
-    self.withdrawBtn = [[UIButton alloc] init];
-    [self.scrollContentView addSubview:self.withdrawBtn];
-    [self.withdrawBtn addTarget:self action:@selector(withdraw) forControlEvents:UIControlEventTouchUpInside];
-    [self.withdrawBtn setTitle:@"提现" forState:UIControlStateNormal];
-    [self.withdrawBtn setTitleColor:HOME_TEXT_COLOR_1 forState:UIControlStateNormal];
-    self.withdrawBtn.titleLabel.font = FONT(15);
-    
-    //语音播报
-//    UIButton *voicePlayBtn = [[UIButton alloc] init];
-//    [self.scrollContentView addSubview:voicePlayBtn];
-//    [voicePlayBtn addTarget:self action:@selector(voicePlay) forControlEvents:UIControlEventTouchUpInside];
-//    [voicePlayBtn setTitle:@"语音播报" forState:UIControlStateNormal];
-//    [voicePlayBtn setTitleColor:HOME_TEXT_COLOR_1 forState:UIControlStateNormal];
-//    voicePlayBtn.titleLabel.font = FONT(15);
- 
-    
-    //营业额
-    self.totalTurnoverLbl = [UILabel labelWithFrame:CGRectZero
-                               textAligment:NSTextAlignmentCenter
-                            backgroundColor:[UIColor clearColor]
-                                       font:FONT(12)
-                                  textColor:textColr];
-    [self.scrollContentView addSubview:self.totalTurnoverLbl];
-    
-    //已提现
-    self.hasWithdrawLbl = [UILabel labelWithFrame:CGRectZero
-                                  textAligment:NSTextAlignmentCenter
-                               backgroundColor:[UIColor clearColor]
-                                          font:FONT(12)
-                                     textColor:textColr];
-    [self.scrollContentView addSubview:self.hasWithdrawLbl];
-    
-    //累计分红收益
-    self.totalProfitLbl = [UILabel labelWithFrame:CGRectZero
-                                     textAligment:NSTextAlignmentCenter
-                                  backgroundColor:[UIColor clearColor]
-                                             font:FONT(12)
-                                        textColor:textColr];
-    [self.scrollContentView addSubview:self.totalProfitLbl];
-    
-    //分红权个数
-    self.profitCountLbl = [UILabel labelWithFrame:CGRectZero
-                                     textAligment:NSTextAlignmentCenter
-                                  backgroundColor:[UIColor clearColor]
-                                             font:FONT(12)
-                                        textColor:textColr];
-    [self.scrollContentView addSubview:self.profitCountLbl];
+//    self.withdrawBtn = [[UIButton alloc] init];
+//    [self.scrollContentView addSubview:self.withdrawBtn];
+//    [self.withdrawBtn addTarget:self action:@selector(huoKuanWithdrawAction) forControlEvents:UIControlEventTouchUpInside];
+//    [self.withdrawBtn setTitle:@"提现" forState:UIControlStateNormal];
+//    [self.withdrawBtn setTitleColor:HOME_TEXT_COLOR_1 forState:UIControlStateNormal];
+//    self.withdrawBtn.titleLabel.font = FONT(15);
     
     
-    UIButton *maskBtn = [[UIButton alloc] init];
-    [self.scrollContentView addSubview:maskBtn];
-    
-    [maskBtn addTarget:self action:@selector(lookProfit) forControlEvents:UIControlEventTouchUpInside];
-    [maskBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.top.equalTo(self.totalTurnoverLbl);
-        make.bottom.equalTo(self.totalProfitLbl);
-        make.width.mas_equalTo(SCREEN_WIDTH - 100);
-    }];
-    
-    
-    [self.balanceLbl mas_makeConstraints:^(MASConstraintMaker *make) {
+    [daiKuanLbl mas_makeConstraints:^(MASConstraintMaker *make) {
         
-        make.top.equalTo(self.phoneLbl.mas_bottom).offset(15);
         make.left.equalTo(self.scrollContentView.mas_left).offset(TOP_LEFT_MARGIN);
+        make.bottom.equalTo(self.giftBalanceLbl.mas_bottom);
+        
     }];
     
     [self.giftBalanceLbl mas_makeConstraints:^(MASConstraintMaker *make) {
         
-        make.top.equalTo(self.balanceLbl.mas_bottom).offset(5);
-        make.left.equalTo(self.scrollContentView.mas_left).offset(TOP_LEFT_MARGIN);
-        
+        make.top.equalTo(self.phoneLbl.mas_bottom).offset(20);
+        make.left.equalTo(daiKuanLbl.mas_right).offset(10);
     }];
-    
-    
     
     [self.accountImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         
         make.left.equalTo(self.scrollContentView.mas_left).offset(15);
-        make.centerY.equalTo(self.balanceLbl.mas_centerY);
+        make.centerY.equalTo(self.giftBalanceLbl.mas_centerY);
     }];
     
-    //提现
-    [self.withdrawBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+//    [self.withdrawBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+//
+//        make.left.equalTo(self.huoKuanBalanceLbl.mas_right).offset(30);
+//        make.centerY.equalTo(self.huoKuanBalanceLbl.mas_centerY);
+//    }];
+    
+    
+    //第二层 ******************************* ********************************//
+    //    //货款  以 huoKuanBalanceLbl 作为基准
+    UILabel *buTieLbl = [UILabel labelWithFrame:CGRectZero
+                                   textAligment:NSTextAlignmentLeft
+                                backgroundColor:[UIColor clearColor]
+                                           font:FONT(20)
+                                      textColor:textColr];
+    [self.scrollContentView addSubview:buTieLbl];
+    buTieLbl.text = @"补贴";
+    
+    //余额 18 38 18
+    self.buTieBalanceLbl = [UILabel labelWithFrame:CGRectZero
+                                      textAligment:NSTextAlignmentLeft
+                                   backgroundColor:[UIColor clearColor]
+                                              font:self.giftBalanceLbl.font
+                                         textColor:textColr];
+    [self.scrollContentView addSubview:self.buTieBalanceLbl];
+    self.buTieBalanceLbl.text  = @"--";
+    
+    //提现按钮
+    UIButton *buTieWithdrawBtn = [[UIButton alloc] init];
+    [self.scrollContentView addSubview:buTieWithdrawBtn];
+    [buTieWithdrawBtn addTarget:self action:@selector(buTieWithdrawAction) forControlEvents:UIControlEventTouchUpInside];
+    [buTieWithdrawBtn setTitle:@"提现" forState:UIControlStateNormal];
+    [buTieWithdrawBtn setTitleColor:HOME_TEXT_COLOR_1 forState:UIControlStateNormal];
+    buTieWithdrawBtn.titleLabel.font = FONT(15);
+    
+    //
+    [self.buTieBalanceLbl mas_makeConstraints:^(MASConstraintMaker *make) {
         
-        make.right.equalTo(self.scrollContentView.mas_right).offset(-20);
-        make.top.equalTo(self.phoneLbl.mas_bottom).offset(15);
-        make.width.greaterThanOrEqualTo(@50);
+        make.top.equalTo(self.giftBalanceLbl.mas_bottom).offset(5);
+        make.left.equalTo(buTieLbl.mas_right).offset(10);
     }];
     
-//    [voicePlayBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-//        
-//        make.right.equalTo(self.scrollContentView.mas_right).offset(-10);
-//        make.top.equalTo(self.withdrawBtn.mas_top);
-//        make.left.greaterThanOrEqualTo(self.withdrawBtn.mas_right);
+    //
+    [buTieLbl mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.left.equalTo(self.scrollContentView.mas_left).offset(TOP_LEFT_MARGIN);
+        make.bottom.equalTo(self.buTieBalanceLbl.mas_bottom);
+        
+    }];
+    
+    [buTieWithdrawBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.left.equalTo(self.buTieBalanceLbl.mas_right).offset(30);
+        make.centerY.equalTo(self.buTieBalanceLbl.mas_centerY);
+        
+    }];
+    //礼品券 ******************************* 分红权查看 ********************************//
+//        self.giftBalanceLbl = [UILabel labelWithFrame:CGRectZero
+//                                     textAligment:NSTextAlignmentLeft
+//                                  backgroundColor:[UIColor clearColor]
+//                                             font:FONT(18)
+//                                        textColor:textColr];
+//        [self.scrollContentView addSubview:self.giftBalanceLbl];
+//
+//    [self.giftBalanceLbl mas_makeConstraints:^(MASConstraintMaker *make) {
+//
+//        make.left.equalTo(daiKuanLbl.mas_left);
+//        make.top.equalTo(self.buTieBalanceLbl.mas_bottom).offset(5);
 //
 //    }];
     
-    //累计营业额
-    [self.totalTurnoverLbl mas_makeConstraints:^(MASConstraintMaker *make) {
+    //第四层 ******************************* 分红权查看 ********************************//
+    UIButton *fenHongQuanLookBtn = [[UIButton alloc] init];
+    [self.scrollContentView addSubview:fenHongQuanLookBtn];
+    [fenHongQuanLookBtn addTarget:self action:@selector(lookProfit) forControlEvents:UIControlEventTouchUpInside];
+    [fenHongQuanLookBtn setTitle:@"分红权查看" forState:UIControlStateNormal];
+    [fenHongQuanLookBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    fenHongQuanLookBtn.titleLabel.font = FONT(15);
+    [fenHongQuanLookBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         
-        make.left.equalTo(self.balanceLbl.mas_left);
-        make.top.equalTo(self.giftBalanceLbl.mas_bottom).offset(10);
+        make.left.equalTo(daiKuanLbl.mas_left);
+        make.top.equalTo(self.buTieBalanceLbl.mas_bottom).offset(5);
+        
     }];
     
-    [self.hasWithdrawLbl mas_makeConstraints:^(MASConstraintMaker *make) {
-        
-        make.left.equalTo(self.totalTurnoverLbl.mas_right).offset(30);
-        make.centerY.equalTo(self.totalTurnoverLbl.mas_centerY);
-        
-    }];
-    
-    [self.totalProfitLbl mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.balanceLbl.mas_left);
-        make.top.equalTo(self.totalTurnoverLbl.mas_bottom).offset(12);
-    }];
-    
-    
-    [self.profitCountLbl mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.totalProfitLbl.mas_right).offset(30);
-        make.centerY.equalTo(self.totalProfitLbl.mas_centerY);
-    }];
-    
-    //底线
-    UIView *line = [[UIView alloc] init];
-    line.backgroundColor = HOME_TEXT_COLOR_1;
-    [self.scrollContentView addSubview:line];
-    [line mas_makeConstraints:^(MASConstraintMaker *make) {
-        
-        make.left.equalTo(self.scrollContentView).mas_offset(TOP_LEFT_MARGIN);
-        make.right.equalTo(self.scrollContentView.mas_right).offset(-15);
-        
-        make.top.equalTo(self.totalProfitLbl.mas_bottom).offset(10);
-        make.height.mas_equalTo(0.5);
-    }];
-
+//    self.accountImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
+//    [self.scrollContentView addSubview:self.accountImageView];
+//    self.accountImageView.image = [UIImage imageNamed:@"home_time"];
+//
+//    UIColor *textColr = HOME_TEXT_COLOR_2;
+//    //余额 18 38 18
+//    self.balanceLbl = [UILabel labelWithFrame:CGRectZero
+//                                  textAligment:NSTextAlignmentLeft
+//                               backgroundColor:[UIColor clearColor]
+//                                          font:FONT(20)
+//                                     textColor:textColr];
+//    [self.scrollContentView addSubview:self.balanceLbl];
+//
+//    self.giftBalanceLbl = [UILabel labelWithFrame:CGRectZero
+//                                 textAligment:NSTextAlignmentLeft
+//                              backgroundColor:[UIColor clearColor]
+//                                         font:FONT(18)
+//                                    textColor:textColr];
+//    [self.scrollContentView addSubview:self.giftBalanceLbl];
+//
+//    //提现按钮
+//    self.withdrawBtn = [[UIButton alloc] init];
+//    [self.scrollContentView addSubview:self.withdrawBtn];
+//    [self.withdrawBtn addTarget:self action:@selector(withdraw) forControlEvents:UIControlEventTouchUpInside];
+//    [self.withdrawBtn setTitle:@"提现" forState:UIControlStateNormal];
+//    [self.withdrawBtn setTitleColor:HOME_TEXT_COLOR_1 forState:UIControlStateNormal];
+//    self.withdrawBtn.titleLabel.font = FONT(15);
+//
+//    //语音播报
+////    UIButton *voicePlayBtn = [[UIButton alloc] init];
+////    [self.scrollContentView addSubview:voicePlayBtn];
+////    [voicePlayBtn addTarget:self action:@selector(voicePlay) forControlEvents:UIControlEventTouchUpInside];
+////    [voicePlayBtn setTitle:@"语音播报" forState:UIControlStateNormal];
+////    [voicePlayBtn setTitleColor:HOME_TEXT_COLOR_1 forState:UIControlStateNormal];
+////    voicePlayBtn.titleLabel.font = FONT(15);
+//
+//
+//    //营业额
+//    self.totalTurnoverLbl = [UILabel labelWithFrame:CGRectZero
+//                               textAligment:NSTextAlignmentCenter
+//                            backgroundColor:[UIColor clearColor]
+//                                       font:FONT(12)
+//                                  textColor:textColr];
+//    [self.scrollContentView addSubview:self.totalTurnoverLbl];
+//
+//    //已提现
+//    self.hasWithdrawLbl = [UILabel labelWithFrame:CGRectZero
+//                                  textAligment:NSTextAlignmentCenter
+//                               backgroundColor:[UIColor clearColor]
+//                                          font:FONT(12)
+//                                     textColor:textColr];
+//    [self.scrollContentView addSubview:self.hasWithdrawLbl];
+//
+//    //累计分红收益
+//    self.totalProfitLbl = [UILabel labelWithFrame:CGRectZero
+//                                     textAligment:NSTextAlignmentCenter
+//                                  backgroundColor:[UIColor clearColor]
+//                                             font:FONT(12)
+//                                        textColor:textColr];
+//    [self.scrollContentView addSubview:self.totalProfitLbl];
+//
+//    //分红权个数
+//    self.profitCountLbl = [UILabel labelWithFrame:CGRectZero
+//                                     textAligment:NSTextAlignmentCenter
+//                                  backgroundColor:[UIColor clearColor]
+//                                             font:FONT(12)
+//                                        textColor:textColr];
+//    [self.scrollContentView addSubview:self.profitCountLbl];
+//
+//
+//    UIButton *maskBtn = [[UIButton alloc] init];
+//    [self.scrollContentView addSubview:maskBtn];
+//
+//    [maskBtn addTarget:self action:@selector(lookProfit) forControlEvents:UIControlEventTouchUpInside];
+//    [maskBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.top.equalTo(self.totalTurnoverLbl);
+//        make.bottom.equalTo(self.totalProfitLbl);
+//        make.width.mas_equalTo(SCREEN_WIDTH - 100);
+//    }];
+//
+//
+//    [self.balanceLbl mas_makeConstraints:^(MASConstraintMaker *make) {
+//
+//        make.top.equalTo(self.phoneLbl.mas_bottom).offset(15);
+//        make.left.equalTo(self.scrollContentView.mas_left).offset(TOP_LEFT_MARGIN);
+//    }];
+//
+//    [self.giftBalanceLbl mas_makeConstraints:^(MASConstraintMaker *make) {
+//
+//        make.top.equalTo(self.balanceLbl.mas_bottom).offset(5);
+//        make.left.equalTo(self.scrollContentView.mas_left).offset(TOP_LEFT_MARGIN);
+//
+//    }];
+//
+//
+//
+//    [self.accountImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+//
+//        make.left.equalTo(self.scrollContentView.mas_left).offset(15);
+//        make.centerY.equalTo(self.balanceLbl.mas_centerY);
+//    }];
+//
+//    //提现
+//    [self.withdrawBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+//
+//        make.right.equalTo(self.scrollContentView.mas_right).offset(-20);
+//        make.top.equalTo(self.phoneLbl.mas_bottom).offset(15);
+//        make.width.greaterThanOrEqualTo(@50);
+//    }];
+//
+////    [voicePlayBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+////
+////        make.right.equalTo(self.scrollContentView.mas_right).offset(-10);
+////        make.top.equalTo(self.withdrawBtn.mas_top);
+////        make.left.greaterThanOrEqualTo(self.withdrawBtn.mas_right);
+////
+////    }];
+//
+//    //累计营业额
+//    [self.totalTurnoverLbl mas_makeConstraints:^(MASConstraintMaker *make) {
+//
+//        make.left.equalTo(self.balanceLbl.mas_left);
+//        make.top.equalTo(self.giftBalanceLbl.mas_bottom).offset(10);
+//    }];
+//
+//    [self.hasWithdrawLbl mas_makeConstraints:^(MASConstraintMaker *make) {
+//
+//        make.left.equalTo(self.totalTurnoverLbl.mas_right).offset(30);
+//        make.centerY.equalTo(self.totalTurnoverLbl.mas_centerY);
+//
+//    }];
+//
+//    [self.totalProfitLbl mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.equalTo(self.balanceLbl.mas_left);
+//        make.top.equalTo(self.totalTurnoverLbl.mas_bottom).offset(12);
+//    }];
+//
+//
+//    [self.profitCountLbl mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.equalTo(self.totalProfitLbl.mas_right).offset(30);
+//        make.centerY.equalTo(self.totalProfitLbl.mas_centerY);
+//    }];
+//
+//    //底线
+//    UIView *line = [[UIView alloc] init];
+//    line.backgroundColor = HOME_TEXT_COLOR_1;
+//    [self.scrollContentView addSubview:line];
+//    [line mas_makeConstraints:^(MASConstraintMaker *make) {
+//
+//        make.left.equalTo(self.scrollContentView).mas_offset(TOP_LEFT_MARGIN);
+//        make.right.equalTo(self.scrollContentView.mas_right).offset(-15);
+//
+//        make.top.equalTo(self.totalProfitLbl.mas_bottom).offset(10);
+//        make.height.mas_equalTo(0.5);
+//    }];
+//
 
 }
 
@@ -1220,6 +1414,7 @@
 //--//
 - (void)topUI {
 
+   
     self.imageView1 = [[UIImageView alloc] initWithFrame:CGRectZero];
     [self.scrollContentView addSubview:self.imageView1];
     self.imageView1.image = [UIImage imageNamed:@"home_setting"];
@@ -1240,7 +1435,6 @@
     [introduceBtn setTitle:@"新手入门" forState:UIControlStateNormal];
     [introduceBtn setTitleColor:HOME_TEXT_COLOR_1 forState:UIControlStateNormal];
     [introduceBtn addTarget:self action:@selector(introduce) forControlEvents:UIControlEventTouchUpInside];
-    introduceBtn.hidden = YES;
     
     
     //店铺状态
@@ -1253,20 +1447,36 @@
     
     //店铺账号
     self.phoneLbl = [UILabel labelWithFrame:CGRectZero
-                                  textAligment:NSTextAlignmentCenter
-                               backgroundColor:[UIColor clearColor]
-                                          font:FONT(12)
-                                     textColor:HOME_TEXT_COLOR_1];
+                               textAligment:NSTextAlignmentCenter
+                            backgroundColor:[UIColor clearColor]
+                                       font:FONT(12)
+                                  textColor:HOME_TEXT_COLOR_1];
     [self.scrollContentView addSubview:self.phoneLbl];
     
-    //类型名称
-    self.shopTypeLbl = [UILabel labelWithFrame:CGRectZero
-                                  textAligment:NSTextAlignmentCenter
-                               backgroundColor:[UIColor clearColor]
-                                          font:FONT(12)
-                                     textColor:HOME_TEXT_COLOR_1];
-    [self.scrollContentView addSubview:self.shopTypeLbl];
+    //累计营业额
+    //营业额
+    self.totalTurnoverLbl = [UILabel labelWithFrame:CGRectZero
+                                       textAligment:NSTextAlignmentCenter
+                                    backgroundColor:[UIColor clearColor]
+                                               font:FONT(12)
+                                          textColor:[UIColor whiteColor]];
+    [self.scrollContentView addSubview:self.totalTurnoverLbl];
     
+    //类型名称
+    //    self.shopTypeLbl = [UILabel labelWithFrame:CGRectZero
+    //                                  textAligment:NSTextAlignmentCenter
+    //                               backgroundColor:[UIColor clearColor]
+    //                                          font:FONT(12)
+    //                                     textColor:HOME_TEXT_COLOR_1];
+    //    [self.scrollContentView addSubview:self.shopTypeLbl];
+    
+    //累计营业额
+    [self.totalTurnoverLbl mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.centerY.equalTo(self.phoneLbl.mas_centerY);
+        make.left.equalTo(self.phoneLbl.mas_right).offset(20);
+        
+    }];
     
     [self.shopNameLbl mas_makeConstraints:^(MASConstraintMaker *make) {
         
@@ -1276,7 +1486,7 @@
     
     
     [self.imageView1 mas_makeConstraints:^(MASConstraintMaker *make) {
-
+        
         make.left.equalTo(self.scrollContentView.mas_left).offset(15);
         make.centerY.equalTo(self.shopNameLbl.mas_centerY);
     }];
@@ -1294,10 +1504,10 @@
         
     }];
     
-    [self.shopTypeLbl mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(self.phoneLbl.mas_centerY);
-        make.left.equalTo(self.phoneLbl.mas_right).offset(20);
-    }];
+    //    [self.shopTypeLbl mas_makeConstraints:^(MASConstraintMaker *make) {
+    //        make.centerY.equalTo(self.phoneLbl.mas_centerY);
+    //        make.left.equalTo(self.phoneLbl.mas_right).offset(20);
+    //    }];
     
     //底线
     UIView *line = [[UIView alloc] init];
