@@ -14,11 +14,13 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
-  - HappyDNS (0.3.10)
-  - IQKeyboardManager (4.0.7)
+  - HappyDNS (0.3.12)
+  - IQKeyboardManager (4.0.13)
   - Masonry (1.0.2)
   - MJExtension (3.0.13)
   - MJRefresh (3.1.12)
+  - NBHTTP (3.0.1):
+    - AFNetworking (= 3.1.0)
   - Qiniu (7.1.4):
     - AFNetworking (~> 3)
     - HappyDNS (~> 0.3)
@@ -28,17 +30,18 @@ PODS:
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
-  - SVProgressHUD (2.1.2)
+  - SVProgressHUD (2.2)
   - ZHMerchant (0.0.2):
     - AFNetworking (= 3.1.0)
-    - IQKeyboardManager (= 4.0.7)
+    - IQKeyboardManager (= 4.0.13)
     - Masonry (= 1.0.2)
     - MJExtension (= 3.0.13)
     - MJRefresh (= 3.1.12)
+    - NBHTTP (= 3.0.1)
     - Qiniu (= 7.1.4)
     - RTRootNavigationController (= 0.5.26)
     - SDWebImage (= 3.8.2)
-    - SVProgressHUD (= 2.1.2)
+    - SVProgressHUD (= 2.2.0)
 
 DEPENDENCIES:
   - ZHMerchant (from `../ZHB/ZHMerchant.podspec`)
@@ -49,22 +52,23 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   ZHMerchant:
-    :commit: 529c5fffa0e396a7bbf4d84a00bbcf4ef2be8e43
+    :commit: dc6354966f0a38eedd2dba6caebc861345a0da22
     :git: "/Users/tianlei/Desktop/ZH2/ZHB"
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
-  HappyDNS: 06a9fed2796663fd87626dbf02552933265bf059
-  IQKeyboardManager: 69002bb4fea60596b710e57d426abc00e5063630
+  HappyDNS: 691a3041128055d09866f86e6e9ca90f24da1f18
+  IQKeyboardManager: 8eab4d8111418414619d1df8e4779ce5d0f8d7e2
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MJExtension: 5932755f451458eefa24239358817f8d291240c7
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
+  NBHTTP: 4860b4121d8ace11c489b957a1b3333c52bac228
   Qiniu: a4c962782035ee25b9da3e195181d8c384bb75be
   RTRootNavigationController: 153e538439fa20faec706019b04375f6c6fabeb6
   SDWebImage: '098e97e6176540799c27e804c96653ee0833d13c'
-  SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
-  ZHMerchant: 85e0233c7afe9ed528c134099543181cc3761b15
+  SVProgressHUD: 3f37f3409ddb15f35c99315ae7dc33c474aa3256
+  ZHMerchant: 1657991abf0155caab699e6f85bd79b5dd2ec2b8
 
-PODFILE CHECKSUM: 69604769b6bdef597f89cc902018b91ac38618ea
+PODFILE CHECKSUM: ddb89a73d5b45aca0e0003d93360984b8f37f0a9
 
 COCOAPODS: 1.2.1

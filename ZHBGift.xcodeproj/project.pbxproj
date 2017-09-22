@@ -11,6 +11,7 @@
 		2E0491781F34147200D059C9 /* ZHFalseHomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E0491771F34147200D059C9 /* ZHFalseHomeVC.m */; };
 		2E08258F1F30235900141645 /* readme.md in Sources */ = {isa = PBXBuildFile; fileRef = 2E08258E1F30235900141645 /* readme.md */; };
 		2E0A3EC61F45DF9100A210C8 /* TLUpdateVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E0A3EC51F45DF9100A210C8 /* TLUpdateVC.m */; };
+		2E1E295E1F73D10E006B4F84 /* RespHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E1E295D1F73D10E006B4F84 /* RespHandler.m */; };
 		2E2207A01DFE4C9E0021C365 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E22079D1DFE4C9E0021C365 /* AppDelegate.m */; };
 		2E220B481DFE56F20021C365 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E220B471DFE56F20021C365 /* CoreMedia.framework */; };
 		2E220B4A1DFE56FD0021C365 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E220B491DFE56FD0021C365 /* AudioToolbox.framework */; };
@@ -74,6 +75,8 @@
 		2E08258E1F30235900141645 /* readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = readme.md; sourceTree = "<group>"; };
 		2E0A3EC41F45DF9100A210C8 /* TLUpdateVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLUpdateVC.h; sourceTree = "<group>"; };
 		2E0A3EC51F45DF9100A210C8 /* TLUpdateVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLUpdateVC.m; sourceTree = "<group>"; };
+		2E1E295C1F73D10D006B4F84 /* RespHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RespHandler.h; sourceTree = "<group>"; };
+		2E1E295D1F73D10E006B4F84 /* RespHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RespHandler.m; sourceTree = "<group>"; };
 		2E22079C1DFE4C9E0021C365 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2E22079D1DFE4C9E0021C365 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		2E220B461DFE548E0021C365 /* ZHPrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZHPrefixHeader.pch; sourceTree = "<group>"; };
@@ -157,6 +160,8 @@
 			children = (
 				2E22079C1DFE4C9E0021C365 /* AppDelegate.h */,
 				2E22079D1DFE4C9E0021C365 /* AppDelegate.m */,
+				2E1E295C1F73D10D006B4F84 /* RespHandler.h */,
+				2E1E295D1F73D10E006B4F84 /* RespHandler.m */,
 				2E0A3EC41F45DF9100A210C8 /* TLUpdateVC.h */,
 				2E0A3EC51F45DF9100A210C8 /* TLUpdateVC.m */,
 				2E08258E1F30235900141645 /* readme.md */,
@@ -444,6 +449,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E1E295E1F73D10E006B4F84 /* RespHandler.m in Sources */,
 				2EFA51C71F4072C200F7B195 /* CDAccountApi.m in Sources */,
 				2EFA518D1F406E6C00F7B195 /* ZHUserLoginVC.m in Sources */,
 				2E2207A01DFE4C9E0021C365 /* AppDelegate.m in Sources */,

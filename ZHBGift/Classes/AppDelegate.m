@@ -24,11 +24,14 @@
 #import "CDVoicePlayer.h"
 #import "ZHFalseHomeVC.h"
 #import "TLUpdateVC.h"
+#import "RespHandler.h"
+#import <NBHTTP/NBNetwork.h>
 
 
 @interface AppDelegate ()<CLLocationManagerDelegate>
 
 @property (nonatomic,strong) CLLocationManager *locationManager;
+@property (nonatomic, strong) RespHandler *respHandler;
 
 @end
 
@@ -41,10 +44,8 @@
     //全局设置UI
     [self uiInit];
     
-    
-    
     //配置环境
-    [AppConfig config].runEnv = RunEnvDev;
+    [AppConfig config].runEnv = RunEnvTest;
     
     
     [AppCopyConfig config].runEnv = [AppConfig config].runEnv;
@@ -57,6 +58,12 @@
     [AppCopyConfig config].pushKey = [AppConfig config].pushKey;
     [AppCopyConfig config].qiNiuKey = [AppConfig config].qiNiuKey;
     [AppCopyConfig config].realNameAuthBackUrl = [AppConfig config].realNameAuthBackUrl;
+    
+    //
+    //新式Networking
+    self.respHandler = [[RespHandler alloc] init];
+    [NBNetworkConfig config].respDelegate = self.respHandler;
+    [NBNetworkConfig config].baseUrl = [NSString stringWithFormat:@"%@%@",[AppConfig config].addr,@"/forward-service/api"];
     
     //
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];

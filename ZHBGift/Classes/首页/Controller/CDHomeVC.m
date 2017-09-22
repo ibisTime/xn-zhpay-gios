@@ -863,7 +863,6 @@
         
         ZHWithdrawalVC *vc = [[ZHWithdrawalVC alloc] init];
         vc.accountNum = FRBCurrency.accountNumber;
-        vc.balance = FRBCurrency.amount;
         vc.navigationController.navigationBar.barTintColor = [UIColor billThemeColor];
 
         [self.navigationController pushViewController:vc animated:YES];
