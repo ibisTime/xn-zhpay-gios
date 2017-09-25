@@ -35,8 +35,8 @@
 #import "UserHeader.h"
 #import "UIHeader.h"
 #import "ZHGiftHeader.h"
-
-
+#import <ZHMerchant/CDVoicePlayer.h>
+#import <CDCommon/UIScrollView+TLAdd.h>
 
 
 #define TOP_LEFT_MARGIN 41
@@ -135,6 +135,8 @@
     
     [super viewWillAppear:animated];
     
+    [CDVoicePlayer player].forbid = YES;
+
     if ([ZHShop shop].isHasShop) {
         
         [self hiddenNavBar];
@@ -552,6 +554,8 @@
             
                 //数据赋值
                 [self data];
+            [[CDVoicePlayer player] start];
+
                 
                 //
             
@@ -1369,7 +1373,7 @@
         self.bgScrollView.backgroundColor = HOME_BLACK_BACKGROUND_COLOR;
         self.bgScrollView.contentSize = CGSizeMake(SCREEN_WIDTH, SCREEN_HEIGHT);
         [self.view addSubview:self.bgScrollView];
-        
+        [self.bgScrollView adjustsContentInsets];
         //
         self.bgScrollView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
             

@@ -26,6 +26,7 @@
 #import "CDShopMgtVC.h"
 #import "TLHeader.h"
 #import "UIHeader.h"
+#import <CDCommon/UIView+Frame.h>
 
 //
 @interface ZHFalseHomeVC ()
@@ -477,7 +478,7 @@
                                          borderColor:[UIColor whiteColor]];
     [headerImageView addSubview:billBtn];
     [billBtn addTarget:self action:@selector(lookBill) forControlEvents:UIControlEventTouchUpInside];
-    billBtn.xx_size = SCREEN_WIDTH/2.0 - 20;
+    billBtn.right = SCREEN_WIDTH/2.0 - 20;
     billBtn.titleLabel.font = [UIFont secondFont];
     
     //    CGFloat y = SCREEN_SCALE;

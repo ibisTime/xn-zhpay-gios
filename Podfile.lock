@@ -14,6 +14,13 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - CDCommon (1.0.3):
+    - CDCommon/Category (= 1.0.3)
+    - CDCommon/Frame (= 1.0.3)
+    - CDCommon/ImageTool (= 1.0.3)
+  - CDCommon/Category (1.0.3)
+  - CDCommon/Frame (1.0.3)
+  - CDCommon/ImageTool (1.0.3)
   - HappyDNS (0.3.12)
   - IQKeyboardManager (4.0.13)
   - Masonry (1.0.2)
@@ -33,6 +40,7 @@ PODS:
   - SVProgressHUD (2.2)
   - ZHMerchant (0.0.2):
     - AFNetworking (= 3.1.0)
+    - CDCommon
     - IQKeyboardManager (= 4.0.13)
     - Masonry (= 1.0.2)
     - MJExtension (= 3.0.13)
@@ -52,11 +60,12 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   ZHMerchant:
-    :commit: dc6354966f0a38eedd2dba6caebc861345a0da22
+    :commit: 72aa3f9b476b03af92e64f65385ce864cbc21d10
     :git: "/Users/tianlei/Desktop/ZH2/ZHB"
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  CDCommon: 3551a469e0787c1c7ffdb8d2e2ba912747b903a1
   HappyDNS: 691a3041128055d09866f86e6e9ca90f24da1f18
   IQKeyboardManager: 8eab4d8111418414619d1df8e4779ce5d0f8d7e2
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
@@ -67,7 +76,7 @@ SPEC CHECKSUMS:
   RTRootNavigationController: 153e538439fa20faec706019b04375f6c6fabeb6
   SDWebImage: '098e97e6176540799c27e804c96653ee0833d13c'
   SVProgressHUD: 3f37f3409ddb15f35c99315ae7dc33c474aa3256
-  ZHMerchant: 1657991abf0155caab699e6f85bd79b5dd2ec2b8
+  ZHMerchant: 1da2b046716437a670f42fbc9928334ab3fa60fc
 
 PODFILE CHECKSUM: ddb89a73d5b45aca0e0003d93360984b8f37f0a9
 
