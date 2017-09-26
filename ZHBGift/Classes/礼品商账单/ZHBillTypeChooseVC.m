@@ -85,8 +85,8 @@
     
     
     //钱包
-    NSArray *typeNames =  @[@"分润",@"礼品券",@"补贴"];
-    NSArray *typeCode =  @[kFRB,kGiftB,@"BTB"];
+    NSArray *typeNames =  @[@"分润",@"礼品券",@"补贴",@"货款"];
+    NSArray *typeCode =  @[kFRB,kGiftB,kBTB,kHKB];
     
     
     self.walletViews = [[NSMutableArray alloc] initWithCapacity:typeNames.count];

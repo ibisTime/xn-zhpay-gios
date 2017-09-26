@@ -62,14 +62,14 @@
  */
 //@property (nonatomic, strong) UILabel *balanceLbl;
 
-@property (nonatomic, strong) UILabel *giftBalanceLbl;
+@property (nonatomic, strong) UILabel *huoKuanBalanceLbl;
 
 @property (nonatomic, strong) UILabel *buTieBalanceLbl;
 
 /**
  礼品券余额
  */
-//@property (nonatomic, strong) UILabel *giftBalanceLbl;
+//@property (nonatomic, strong) UILabel *huoKuanBalanceLbl;
 
 
 @property (nonatomic, strong) UIButton *withdrawBtn;
@@ -356,6 +356,25 @@
     [self.navigationController pushViewController:vc animated:YES];
     
 
+}
+
+
+#pragma mark-货款提现
+- (void)huoKuanWithdrawAction {
+    
+    
+    ZHWithdrawalVC *vc = [[ZHWithdrawalVC alloc] init];
+    [self.currencyRoom enumerateObjectsUsingBlock:^(ZHCurrencyModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        
+        if ([obj.currency isEqualToString:kHKB]) {
+            vc.accountNum = obj.accountNumber;
+            *stop = YES;
+        }
+        
+    }];
+    vc.navigationController.navigationBar.barTintColor = [UIColor billThemeColor];
+    [self.navigationController pushViewController:vc animated:YES];
+    
 }
 
 - (void)tl_placeholderOperation {
@@ -808,9 +827,9 @@
             
             self.buTieBalanceLbl.attributedText = [self formatAmount:obj.amount unit:@""];
             
-        } else if ([obj.currency isEqualToString:@"LPQ"]) {
+        } else if ([obj.currency isEqualToString:kHKB]) {
             
-            self.giftBalanceLbl.attributedText = [self formatAmount:obj.amount unit:@""];
+            self.huoKuanBalanceLbl.attributedText = [self formatAmount:obj.amount unit:@""];
 
         }
         
@@ -1073,34 +1092,34 @@
                                              font:FONT(20)
                                         textColor:textColr];
     [self.scrollContentView addSubview:daiKuanLbl];
-    daiKuanLbl.text = @"礼品券";
+    daiKuanLbl.text = @"货款";
     
     //余额 18 38 18
-    self.giftBalanceLbl = [UILabel labelWithFrame:CGRectZero
+    self.huoKuanBalanceLbl = [UILabel labelWithFrame:CGRectZero
                                         textAligment:NSTextAlignmentLeft
                                      backgroundColor:[UIColor clearColor]
                                                 font:FONT(25)
                                            textColor:textColr];
-    [self.scrollContentView addSubview:self.giftBalanceLbl];
-    self.giftBalanceLbl.text  = @"--";
+    [self.scrollContentView addSubview:self.huoKuanBalanceLbl];
+    self.huoKuanBalanceLbl.text  = @"--";
     
     //提现按钮
-//    self.withdrawBtn = [[UIButton alloc] init];
-//    [self.scrollContentView addSubview:self.withdrawBtn];
-//    [self.withdrawBtn addTarget:self action:@selector(huoKuanWithdrawAction) forControlEvents:UIControlEventTouchUpInside];
-//    [self.withdrawBtn setTitle:@"提现" forState:UIControlStateNormal];
-//    [self.withdrawBtn setTitleColor:HOME_TEXT_COLOR_1 forState:UIControlStateNormal];
-//    self.withdrawBtn.titleLabel.font = FONT(15);
+    self.withdrawBtn = [[UIButton alloc] init];
+    [self.scrollContentView addSubview:self.withdrawBtn];
+    [self.withdrawBtn addTarget:self action:@selector(huoKuanWithdrawAction) forControlEvents:UIControlEventTouchUpInside];
+    [self.withdrawBtn setTitle:@"提现" forState:UIControlStateNormal];
+    [self.withdrawBtn setTitleColor:HOME_TEXT_COLOR_1 forState:UIControlStateNormal];
+    self.withdrawBtn.titleLabel.font = FONT(15);
     
     
     [daiKuanLbl mas_makeConstraints:^(MASConstraintMaker *make) {
         
         make.left.equalTo(self.scrollContentView.mas_left).offset(TOP_LEFT_MARGIN);
-        make.bottom.equalTo(self.giftBalanceLbl.mas_bottom);
+        make.bottom.equalTo(self.huoKuanBalanceLbl.mas_bottom);
         
     }];
     
-    [self.giftBalanceLbl mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.huoKuanBalanceLbl mas_makeConstraints:^(MASConstraintMaker *make) {
         
         make.top.equalTo(self.phoneLbl.mas_bottom).offset(20);
         make.left.equalTo(daiKuanLbl.mas_right).offset(10);
@@ -1109,14 +1128,14 @@
     [self.accountImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         
         make.left.equalTo(self.scrollContentView.mas_left).offset(15);
-        make.centerY.equalTo(self.giftBalanceLbl.mas_centerY);
+        make.centerY.equalTo(self.huoKuanBalanceLbl.mas_centerY);
     }];
     
-//    [self.withdrawBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-//
-//        make.left.equalTo(self.huoKuanBalanceLbl.mas_right).offset(30);
-//        make.centerY.equalTo(self.huoKuanBalanceLbl.mas_centerY);
-//    }];
+    [self.withdrawBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+
+        make.left.equalTo(self.huoKuanBalanceLbl.mas_right).offset(30);
+        make.centerY.equalTo(self.huoKuanBalanceLbl.mas_centerY);
+    }];
     
     
     //第二层 ******************************* ********************************//
@@ -1133,7 +1152,7 @@
     self.buTieBalanceLbl = [UILabel labelWithFrame:CGRectZero
                                       textAligment:NSTextAlignmentLeft
                                    backgroundColor:[UIColor clearColor]
-                                              font:self.giftBalanceLbl.font
+                                              font:self.huoKuanBalanceLbl.font
                                          textColor:textColr];
     [self.scrollContentView addSubview:self.buTieBalanceLbl];
     self.buTieBalanceLbl.text  = @"--";
@@ -1149,7 +1168,7 @@
     //
     [self.buTieBalanceLbl mas_makeConstraints:^(MASConstraintMaker *make) {
         
-        make.top.equalTo(self.giftBalanceLbl.mas_bottom).offset(5);
+        make.top.equalTo(self.huoKuanBalanceLbl.mas_bottom).offset(5);
         make.left.equalTo(buTieLbl.mas_right).offset(10);
     }];
     
@@ -1168,14 +1187,14 @@
         
     }];
     //礼品券 ******************************* 分红权查看 ********************************//
-//        self.giftBalanceLbl = [UILabel labelWithFrame:CGRectZero
+//        self.huoKuanBalanceLbl = [UILabel labelWithFrame:CGRectZero
 //                                     textAligment:NSTextAlignmentLeft
 //                                  backgroundColor:[UIColor clearColor]
 //                                             font:FONT(18)
 //                                        textColor:textColr];
-//        [self.scrollContentView addSubview:self.giftBalanceLbl];
+//        [self.scrollContentView addSubview:self.huoKuanBalanceLbl];
 //
-//    [self.giftBalanceLbl mas_makeConstraints:^(MASConstraintMaker *make) {
+//    [self.huoKuanBalanceLbl mas_makeConstraints:^(MASConstraintMaker *make) {
 //
 //        make.left.equalTo(daiKuanLbl.mas_left);
 //        make.top.equalTo(self.buTieBalanceLbl.mas_bottom).offset(5);
@@ -1209,12 +1228,12 @@
 //                                     textColor:textColr];
 //    [self.scrollContentView addSubview:self.balanceLbl];
 //
-//    self.giftBalanceLbl = [UILabel labelWithFrame:CGRectZero
+//    self.huoKuanBalanceLbl = [UILabel labelWithFrame:CGRectZero
 //                                 textAligment:NSTextAlignmentLeft
 //                              backgroundColor:[UIColor clearColor]
 //                                         font:FONT(18)
 //                                    textColor:textColr];
-//    [self.scrollContentView addSubview:self.giftBalanceLbl];
+//    [self.scrollContentView addSubview:self.huoKuanBalanceLbl];
 //
 //    //提现按钮
 //    self.withdrawBtn = [[UIButton alloc] init];
@@ -1283,7 +1302,7 @@
 //        make.left.equalTo(self.scrollContentView.mas_left).offset(TOP_LEFT_MARGIN);
 //    }];
 //
-//    [self.giftBalanceLbl mas_makeConstraints:^(MASConstraintMaker *make) {
+//    [self.huoKuanBalanceLbl mas_makeConstraints:^(MASConstraintMaker *make) {
 //
 //        make.top.equalTo(self.balanceLbl.mas_bottom).offset(5);
 //        make.left.equalTo(self.scrollContentView.mas_left).offset(TOP_LEFT_MARGIN);
@@ -1318,7 +1337,7 @@
 //    [self.totalTurnoverLbl mas_makeConstraints:^(MASConstraintMaker *make) {
 //
 //        make.left.equalTo(self.balanceLbl.mas_left);
-//        make.top.equalTo(self.giftBalanceLbl.mas_bottom).offset(10);
+//        make.top.equalTo(self.huoKuanBalanceLbl.mas_bottom).offset(10);
 //    }];
 //
 //    [self.hasWithdrawLbl mas_makeConstraints:^(MASConstraintMaker *make) {
