@@ -45,7 +45,7 @@
     [self uiInit];
     
     //配置环境
-    [AppConfig config].runEnv = RunEnvTest;
+    [AppConfig config].runEnv = RunEnvDev;
     
     
     [AppCopyConfig config].runEnv = [AppConfig config].runEnv;

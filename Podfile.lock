@@ -60,7 +60,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   ZHMerchant:
-    :commit: 186c21139b249c4546dcdd788da39d614a7570d6
+    :commit: f93c5b2dc8971cd37f60a84588b12924705b0f16
     :git: "/Users/tianlei/Desktop/ZH2/ZHB"
 
 SPEC CHECKSUMS:
