@@ -27,6 +27,7 @@
 #import "TLHeader.h"
 #import "UIHeader.h"
 #import <CDCommon/UIView+Frame.h>
+#import <CDCommon/UIScrollView+TLAdd.h>
 
 //
 @interface ZHFalseHomeVC ()
@@ -58,7 +59,7 @@
     self.bgScrollView  =  [[UIScrollView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:self.bgScrollView];
     self.bgScrollView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshState)];
-    
+    [self.bgScrollView adjustsContentInsets];
     [self setUpUI];
     
     self.nameLbl.text = @"商户";
