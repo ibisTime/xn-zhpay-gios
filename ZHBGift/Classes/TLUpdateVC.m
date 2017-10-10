@@ -39,7 +39,7 @@
     [self.view addSubview:bgIV];
     bgIV.contentMode = UIViewContentModeScaleAspectFill;
     
-    bgIV.image = [UIImage imageNamed:@"lanchImg"];
+    bgIV.image = [UIImage imageNamed:@"newLanch"];
     [self setPlaceholderViewTitle:@"加载失败" operationTitle:@"重新加载"];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillEnterForeground) name:UIApplicationWillEnterForegroundNotification object:nil];
