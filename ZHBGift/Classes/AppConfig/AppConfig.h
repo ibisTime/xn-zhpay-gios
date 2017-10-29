@@ -40,6 +40,7 @@ typedef NS_ENUM(NSUInteger, RunEnv) {
 @property (nonatomic, copy, readonly) NSString *qiNiuKey;
 
 @property (nonatomic, strong) NSString *realNameAuthBackUrl;
+@property (nonatomic, assign) BOOL needRealNameAuth;
 
 @property  Class homeVCClass;
 

@@ -349,7 +349,7 @@
 				TargetAttributes = {
 					2EB55F161DFE4B2400B58120 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = V9ZZF26ZX5;
+						DevelopmentTeam = 7AF79WNB7Z;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -574,7 +574,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = V9ZZF26ZX5;
+				DEVELOPMENT_TEAM = 7AF79WNB7Z;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -606,7 +606,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = V9ZZF26ZX5;
+				DEVELOPMENT_TEAM = 7AF79WNB7Z;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
